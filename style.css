@@ -1,5 +1,21 @@
 /* mains */
+body {
+    margin: 0;
+}
 
+header {
+    background-color: rgb(50, 42, 104);
+    display: flex;
+}
+
+img {
+    height: 32px;
+    width: auto;
+}
+
+figcaption {
+    display: none;
+}
 
 /* generals */
 
