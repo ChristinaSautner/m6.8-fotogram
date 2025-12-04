@@ -22,16 +22,23 @@
 
     <main>
         <!-- div für fotoliste -->
-        <div id="thumbnails"></div>     
+        <div id="thumbnails"></div>
 
-        <!-- dialog für Großbild
-         ".showModal()"
-         ".close()" -->
-        <dialog id="dialogImage">
-            <title></title>
-            <figure>
-                <img src="" alt="">
-            </figure>
+        <!-- dialog für Großbild -->
+        <dialog id="dialog">
+            <header>
+                <span id="dialogFileName"></span>
+                <button onclick="closeDialog()"></button>
+            </header>
+            <section>
+                <title id="dialogText"></title>
+                <div id="dialogImage"></div>
+            </section>
+            <footer>
+                <button></button>   <!-- onclick ergänzen -->
+                <span id="dialogImgCounter"></span>
+                <button></button>   <!-- onclick ergänzen -->
+            </footer>
         </dialog>
     </main>
 
