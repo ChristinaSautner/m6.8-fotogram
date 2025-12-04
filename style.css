@@ -1,10 +1,13 @@
 /* mains */
 body {
     margin: 0;
+    background-color: rgb(61, 51, 123);
+
 }
 
 header {
     background-color: rgb(50, 42, 104);
+    box-shadow: 0 6px 6px rgb(64, 0, 128);
     display: flex;
 }
 
@@ -24,4 +27,3 @@ figcaption {
 
 
 /*small classes */
-
