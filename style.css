@@ -1,4 +1,10 @@
 /* mains */
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
     display: flex;
@@ -13,12 +19,16 @@ header {
     display: flex;
 }
 
-
+h1 {
+    text-align: center;
+    color: wheat;
+    font-family: 'Josefin Sans';
+}
 
 footer {
     background-color: rgb(50, 42, 104);
     box-shadow: 3px 0 6px rgb(64, 0, 128);
-    
+
     /* to make footer stick to bottom -> to be changed! */
     position: fixed;
     bottom: 0;
