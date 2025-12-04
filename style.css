@@ -9,7 +9,7 @@ body {
 
 header {
     background-color: rgb(50, 42, 104);
-    box-shadow: 0 6px 6px rgb(64, 0, 128);
+    box-shadow: 0 3px 3px rgb(64, 0, 128);
     display: flex;
 }
 
@@ -17,7 +17,10 @@ header {
 
 footer {
     background-color: rgb(50, 42, 104);
-    position: fixed;    /* to make footer stick to bottom -> to be changed! */
+    box-shadow: 3px 0 6px rgb(64, 0, 128);
+    
+    /* to make footer stick to bottom -> to be changed! */
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
