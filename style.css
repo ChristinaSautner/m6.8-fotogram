@@ -1,11 +1,4 @@
-/* mains */
-@font-face {
-    font-family: 'Josefin Sans';
-    src: url('fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
+/* MAINS */
 body {
     display: flex;
     flex-direction: column;
@@ -29,28 +22,28 @@ footer {
     background-color: rgb(50, 42, 104);
     box-shadow: 3px 0 6px rgb(64, 0, 128);
 
-    /* to make footer stick to bottom -> to be changed! */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-
-
-/* generals */
-header img {
-    height: 64px;
-    width: auto;
-}
-
-main img {
     height: 96px;
-    width: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    
+
+    /* make footer stay bottom when main is short -> to be changed! */
 }
 
-footer img {
-    height: 32px;
-    width: auto;
+
+
+
+
+/* GENERALS */
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 figcaption {
@@ -60,7 +53,45 @@ figcaption {
 
 
 
-/* big classes */
+
+/* SPECIFICS */
+/* header */
+header img {
+    height: 64px;
+    width: auto;
+}
 
 
-/*small classes */
+/* main */
+main img {
+    height: 96px;
+    width: auto;
+}
+
+
+/* footer */
+footer img {
+    height: 32px;
+    width: auto;
+}
+
+footer figure {
+    margin: 0;
+
+}
+
+footer p {
+    margin: 0;
+}
+
+
+
+
+
+/* CLASSES */
+
+
+
+
+
+/*ID's */
