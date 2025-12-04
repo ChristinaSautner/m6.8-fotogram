@@ -12,10 +12,10 @@ header {
     display: flex;
 }
 
-h1 {
-    text-align: center;
-    color: wheat;
-    font-family: 'Josefin Sans';
+main {
+    margin: 16px 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 footer {
@@ -29,7 +29,7 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    
+
 
     /* make footer stay bottom when main is short -> to be changed! */
 }
@@ -44,6 +44,12 @@ footer {
     src: url('fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
+
+h1 {
+    text-align: center;
+    color: wheat;
+    font-family: 'Josefin Sans';
 }
 
 figcaption {
@@ -61,11 +67,11 @@ header img {
     width: auto;
 }
 
-
 /* main */
 main img {
     height: 96px;
     width: auto;
+    border-radius: 18px;
 }
 
 
