@@ -1,8 +1,10 @@
 /* mains */
+
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     background-color: rgb(61, 51, 123);
-
 }
 
 header {
@@ -11,7 +13,29 @@ header {
     display: flex;
 }
 
-img {
+
+
+footer {
+    background-color: rgb(50, 42, 104);
+    position: fixed;    /* to make footer stick to bottom -> to be changed! */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+/* generals */
+header img {
+    height: 32px;
+    width: auto;
+}
+
+main img {
+    height: 96px;
+    width: auto;
+}
+
+footer img {
     height: 32px;
     width: auto;
 }
@@ -20,7 +44,7 @@ figcaption {
     display: none;
 }
 
-/* generals */
+
 
 
 /* big classes */
