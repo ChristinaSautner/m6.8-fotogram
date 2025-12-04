@@ -25,31 +25,31 @@ let Images = [
 ];
 
 
-let ImageTitles = [
-    'beach-mountain-snow-sand.jpg',
-    'chow-chow-dogs-car.jpg',
-    'cloud-sea-village.jpg',
-    'crow-crazy.jpg',
-    'crow.jpg',
-    'deers-field.jpg',
-    'ducklings-ducks.jpg',
-    'elephants.jpg',
-    'field-tree-pink-sunset.jpg',
-    'forest-tree-tube.jpg',
-    'fox-snow.jpg',
-    'giraffs-tree.jpg',
-    'lake-dessert-mountain.jpg',
-    'lamb-sheep.jpg',
-    'leopards.jpg',
-    'lionesses-lions-night.jpg',
-    'monkeys.jpg',
-    'rhinos.jpg',
-    'road-idyllic-village.jpg',
-    'scotland-cliff.jpg',
-    'sparrows.jpg',
-    'vultures-geier.jpg',
-    'zebras.jpg'
-];
+// let ImageTitles = [
+//     'beach-mountain-snow-sand.jpg',
+//     'chow-chow-dogs-car.jpg',
+//     'cloud-sea-village.jpg',
+//     'crow-crazy.jpg',
+//     'crow.jpg',
+//     'deers-field.jpg',
+//     'ducklings-ducks.jpg',
+//     'elephants.jpg',
+//     'field-tree-pink-sunset.jpg',
+//     'forest-tree-tube.jpg',
+//     'fox-snow.jpg',
+//     'giraffs-tree.jpg',
+//     'lake-dessert-mountain.jpg',
+//     'lamb-sheep.jpg',
+//     'leopards.jpg',
+//     'lionesses-lions-night.jpg',
+//     'monkeys.jpg',
+//     'rhinos.jpg',
+//     'road-idyllic-village.jpg',
+//     'scotland-cliff.jpg',
+//     'sparrows.jpg',
+//     'vultures-geier.jpg',
+//     'zebras.jpg'
+// ];
 
 
 // function openDialog() / closeDialog()
