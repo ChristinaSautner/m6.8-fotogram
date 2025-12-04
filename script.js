@@ -57,7 +57,7 @@ let dialogRef = document.getElementById('dialogImage');
 
 
 function renderImages() {
-    let contentRef = document.getElementById('thumbnails');
+    let thumbnails = document.getElementById('thumbnails');
     /**
      * pull images
      * show images as thumbnails
