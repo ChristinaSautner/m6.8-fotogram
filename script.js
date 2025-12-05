@@ -53,7 +53,7 @@ let ArrayImages = [
 
 
 // function openDialog() / closeDialog()
-let dialogRef = document.getElementById('dialogImage');
+let dialogRef = document.getElementById('dialog');
 
 
 function renderImages() {
