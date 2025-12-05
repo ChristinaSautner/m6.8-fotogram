@@ -97,7 +97,15 @@ main img:active {
     transform: translateY(2px);
 }
 
+dialog {
+    border: 5px solid orange;
+    transform: translateX(500px);
+}
 
+dialog.opened {
+    transform: translateX(0px);
+    transition: all 1s ease-in;
+}
 
 
 

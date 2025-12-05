@@ -64,6 +64,7 @@ function renderImages() {
     // onklick-event auf fotos setzen
 function openDialog() {
     dialogRef.showModal();
+    dialogRef.classList.add('opened');
 }
 
     // onklick-event im dialog setzen
