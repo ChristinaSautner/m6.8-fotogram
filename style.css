@@ -33,11 +33,13 @@ footer {
     height: 96px;
 
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+
+    padding: 0 40px;
 }
+
+
 
 
 
@@ -57,6 +59,10 @@ h1 {
     font-family: 'Josefin Sans';
 }
 
+figure {
+    margin: 0;
+}
+
 figcaption {
     display: none;
 }
@@ -70,26 +76,29 @@ figcaption {
 header img {
     height: 64px;
     width: auto;
+    margin-left: 40px;
 }
 
 /* main */
 main div {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    justify-content: center;
+    gap: 24px;
 }
 
 main img {
-    height: 96px;
-    width: auto;
+    height: 166px;
+    width: 166px;
     border-radius: 18px;
+    object-fit: cover;
 }
 
 main img:hover {
     cursor: pointer;
     box-shadow: 0 0 8px 2px lightblue;
     /* check if 0.1s is acceptable */
-    transition: 0.1s ease-in-out;   
+    transition: 0.1s ease-in-out;
 
 }
 
@@ -116,11 +125,6 @@ footer img {
     width: auto;
 }
 
-footer figure {
-    margin: 0;
-
-}
-
 footer p {
     margin: 0;
 }
@@ -129,10 +133,20 @@ footer p {
 
 
 
-/* CLASSES */
+/* MEDIA-QUERIES */
+@media (max-width:435px) {
+    header {
+        justify-content: center;
+    }
 
+    header img {
+        height: 48px;
+        margin: 0;
+    }
 
-
-
-
-/*ID's */
+    footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+    }
+}
