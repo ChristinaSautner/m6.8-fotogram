@@ -91,8 +91,10 @@ function renderImages() {
 function openDialog() {
     dialogRef.showModal();
     dialogRef.classList.add('opened');
-
-
+    // add loop for:
+    // Titles        in  "span"  ("dialogFileTitle")
+    // Descriptions  in  "title" ("dialogDescription")
+    // Images        in  "div"   ("dialogImage")
 }
 
 // onklick-event im dialog setzen
