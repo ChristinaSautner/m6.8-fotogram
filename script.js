@@ -25,31 +25,57 @@ let ArrayImages = [
 ];
 
 
-// let ImageTitles = [
-//     'beach-mountain-snow-sand.jpg',
-//     'chow-chow-dogs-car.jpg',
-//     'cloud-sea-village.jpg',
-//     'crow-crazy.jpg',
-//     'crow.jpg',
-//     'deers-field.jpg',
-//     'ducklings-ducks.jpg',
-//     'elephants.jpg',
-//     'field-tree-pink-sunset.jpg',
-//     'forest-tree-tube.jpg',
-//     'fox-snow.jpg',
-//     'giraffs-tree.jpg',
-//     'lake-dessert-mountain.jpg',
-//     'lamb-sheep.jpg',
-//     'leopards.jpg',
-//     'lionesses-lions-night.jpg',
-//     'monkeys.jpg',
-//     'rhinos.jpg',
-//     'road-idyllic-village.jpg',
-//     'scotland-cliff.jpg',
-//     'sparrows.jpg',
-//     'vultures-geier.jpg',
-//     'zebras.jpg'
-// ];
+let ArrayImageFileTitles = [
+    'beach-mountain-snow-sand.jpg',
+    'chow-chow-dogs-car.jpg',
+    'cloud-sea-village.jpg',
+    'crow-crazy.jpg',
+    'crow.jpg',
+    'deers-field.jpg',
+    'ducklings-ducks.jpg',
+    'elephants.jpg',
+    'field-tree-pink-sunset.jpg',
+    'forest-tree-tube.jpg',
+    'fox-snow.jpg',
+    'giraffs-tree.jpg',
+    'lake-dessert-mountain.jpg',
+    'lamb-sheep.jpg',
+    'leopards.jpg',
+    'lionesses-lions-night.jpg',
+    'monkeys.jpg',
+    'rhinos.jpg',
+    'road-idyllic-village.jpg',
+    'scotland-cliff.jpg',
+    'sparrows.jpg',
+    'vultures-geier.jpg',
+    'zebras.jpg'
+];
+
+let ArrayImageDescription = [
+    "Beach in front of a Mountain",
+    "dogs enjoying the cool breeze",
+    "Ocean of Clouds",
+    "fuzzy Crow",
+    "Crow",
+    "wild Deers",
+    "cuddled up Ducklings",
+    "playful Elephants",
+    "single Tree at beautiful Sunset",
+    "mystic Trees",
+    "Fox in Snow",
+    "Giraffs with high Tree",
+    "Lake at mounty Desert",
+    "mother Sheep with Lamb",
+    "fluffy Leopards",
+    "Lionesses at night",
+    "little Monkeys",
+    "mother Rhino with Baby",
+    "idyllic Road to Village",
+    "scottish Cliff",
+    "Sparrows on Branch",
+    "Vultures in Greens",
+    "Zebras in Greens"
+];
 
 
 // function openDialog() / closeDialog()
@@ -61,13 +87,15 @@ function renderImages() {
     thumbnails.innerHTML = ArrayImages.join('');
 }
 
-    // onklick-event auf fotos setzen
+// onklick-event auf fotos setzen
 function openDialog() {
     dialogRef.showModal();
     dialogRef.classList.add('opened');
+
+
 }
 
-    // onklick-event im dialog setzen
+// onklick-event im dialog setzen
 function closeDialog() {
     dialogRef.close();
 }
