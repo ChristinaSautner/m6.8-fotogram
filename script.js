@@ -55,23 +55,18 @@ let ArrayImages = [
 // function openDialog() / closeDialog()
 let dialogRef = document.getElementById('dialog');
 
-
+// show images as thumbnails
 function renderImages() {
     let thumbnails = document.getElementById('thumbnails');
     thumbnails.innerHTML = ArrayImages.join('');
-    
-    /**
-     * pull images
-     * show images as thumbnails
-     */
 }
 
-// onklick-event auf fotos setzen
+    // onklick-event auf fotos setzen
 function openDialog() {
     dialogRef.showModal();
 }
 
-// onklick-event im dialog setzen
+    // onklick-event im dialog setzen
 function closeDialog() {
     dialogRef.close();
 }
