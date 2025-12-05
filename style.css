@@ -85,6 +85,18 @@ main img {
     border-radius: 18px;
 }
 
+main img:hover {
+    cursor: pointer;
+    box-shadow: 0 0 8px 2px lightblue;
+    /* check if 0.1s is acceptable */
+    transition: 0.1s ease-in-out;   
+
+}
+
+main img:active {
+    transform: translateY(2px);
+}
+
 
 /* footer */
 footer img {
