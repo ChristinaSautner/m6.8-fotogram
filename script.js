@@ -1,4 +1,4 @@
-let Images = [
+let ArrayImages = [
     '<img src="./assets/images/beach-mountain-snow-sand.jpg" alt="Beach in front of a Mountain">',
     '<img src="./assets/images/chow-chow-dogs-car.jpg" alt="dogs enjoying the cool breeze">',
     '<img src="./assets/images/cloud-sea-village.jpg" alt="Ocean of Clouds">',
@@ -58,7 +58,8 @@ let dialogRef = document.getElementById('dialogImage');
 
 function renderImages() {
     let thumbnails = document.getElementById('thumbnails');
-    thumbnails.innerHTML = Images;
+    thumbnails.innerHTML = ArrayImages;
+    
     /**
      * pull images
      * show images as thumbnails
