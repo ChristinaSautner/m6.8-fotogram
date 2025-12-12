@@ -82,28 +82,17 @@ let ArrayImagesDescription = [
 let dialogRef = document.getElementById('dialog');
 
 // show images as thumbnails
-
-// function renderImages() {
-//     let thumbnails = document.getElementById('thumbnails');
-//     thumbnails.innerHTML = '';
-
-//     ArrayImageFileTitles.forEach((file, index) {
-//         thumbnails.innerHTML +=
-//             `<img 
-//     src="./assets/images/${file}"
-//     alt = "${ArrayImageDescription[index]}"
-//     class = "thumb"
-//     data-index = "${index}"
-//     >`;
-//     });
-// }
-
 function renderImages() {
     let thumbnails = document.getElementById('thumbnails');
     thumbnails.innerHTML = '';
 
     ArrayImages.forEach((file, index) => {
-        thumbnails.innerHTML += `
+        thumbnails.innerHTML += thumbsContent(file, index);
+    });
+}
+
+function thumbsContent(file, index) {
+    return `
             <img 
                 src="./assets/images/${file}" 
                 alt="${ArrayImagesDescription[index]}"
@@ -111,7 +100,6 @@ function renderImages() {
                 data-index="${index}"
             >
         `;
-    });
 }
 
 // onklick-event auf fotos setzen
