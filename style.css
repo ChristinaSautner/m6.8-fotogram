@@ -113,6 +113,8 @@ main img:active {
 }
 
 dialog {
+    border-color: gray;
+    background-color:azure;
     /* border: 5px solid orange;
     transform: translateX(500px); */
 }
@@ -121,6 +123,12 @@ dialog.opened {
     display: block;
     /* transform: translateX(0px);
     transition: all 1s ease-in; */
+}
+
+dialog header,footer {
+    /* maby cornflowerblue ??? */
+    background-color: cadetblue;    
+    box-shadow: 3px 3px 3px rgb(42, 67, 104);
 }
 
 
