@@ -82,13 +82,14 @@ function thumbsContent(file, index) {
 // onklick-event auf fotos setzen
 function openDialog() {
     dialog.showModal();
-    dialog.classList.add('opened')
+    dialog.classList.add('opened');
 
     // // add loop for:
     // // Titles        in  "span"  ("dialogFileTitle")
     // // Descriptions  in  "title" ("dialogDescription")
     // // Images        in  "div"   ("dialogImage")
     // // Counter       in  "span"  ("dialogCounter")
+
 }
 
 
