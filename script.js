@@ -88,6 +88,7 @@ function openDialog() {
     // // Titles        in  "span"  ("dialogFileTitle")
     // // Descriptions  in  "title" ("dialogDescription")
     // // Images        in  "div"   ("dialogImage")
+    // // Counter       in  "span"  ("dialogCounter")
 }
 
 
