@@ -125,7 +125,7 @@ dialog.opened {
     transition: all 1s ease-in; */
 }
 
-dialog header,footer {
+dialog header, dialog footer {
     /* maby cornflowerblue ??? */
     background-color: cadetblue;    
     box-shadow: 3px 3px 3px rgb(42, 67, 104);
