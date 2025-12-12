@@ -89,6 +89,8 @@ function renderImages() {
 
 // onklick-event auf fotos setzen
 function openDialog() {
+    dialog.showModal();
+    dialog.classList.add('opened')
 
     // // add loop for:
     // // Titles        in  "span"  ("dialogFileTitle")
@@ -96,7 +98,8 @@ function openDialog() {
     // // Images        in  "div"   ("dialogImage")
 }
 
-// onklick-event im dialog setzen
+
 function closeDialog() {
-    dialogRef.close();
+    dialog.close();
+    dialog.classList.remove('opened');
 }

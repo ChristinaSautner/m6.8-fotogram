@@ -113,13 +113,14 @@ main img:active {
 }
 
 dialog {
-    border: 5px solid orange;
-    transform: translateX(500px);
+    /* border: 5px solid orange;
+    transform: translateX(500px); */
 }
 
 dialog.opened {
-    transform: translateX(0px);
-    transition: all 1s ease-in;
+    display: block;
+    /* transform: translateX(0px);
+    transition: all 1s ease-in; */
 }
 
 
