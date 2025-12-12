@@ -56,16 +56,23 @@ let dialogRef = document.getElementById('dialog');
 
 
 
-// show images as thumbnails
+// create images and onclick-events
 function renderImages() {
     let thumbnails = document.getElementById('thumbnails');
     thumbnails.innerHTML = '';
-
+    // show images
     ArrayImages.forEach((file, index) => {
         thumbnails.innerHTML += thumbsContent(file, index);
     });
-} 
-// html-part
+    // onclick-event for each img
+    document.querySelectorAll('.thumb').forEach(img => {
+        img.addEventListener('click', () => {
+            let index = img.dataset.index;
+            openDialog(index);
+        });
+    });
+}
+// show images -> html-part
 function thumbsContent(file, index) {
     return `
             <img 
@@ -80,7 +87,7 @@ function thumbsContent(file, index) {
 
 
 // onklick-event auf fotos setzen
-function openDialog() {
+function openDialog(index) {
     dialog.showModal();
     dialog.classList.add('opened');
 
@@ -90,7 +97,14 @@ function openDialog() {
     // // Images        in  "div"   ("dialogImage")
     // // Counter       in  "span"  ("dialogCounter")
 
+    document.getElementById('dialogFileTitle').textContent = ArrayImages[index];
+    document.getElementById('dialogDescription').textContent = ArrayImagesDescription[index];
+    document.getElementById('dialogImage').innerHTML =
+        `<img src="./assets/images/${ArrayImages[index]}">`;
+    document.getElementById('dialogCounter').textContent =
+        `${parseInt(index) + 1} / ${ArrayImages.length}`;
 }
+
 
 
 function closeDialog() {
