@@ -59,7 +59,7 @@ let dialogRef = document.getElementById('dialog');
 // create images and onclick-events
 function renderImages() {
     let thumbnails = document.getElementById('thumbnails');
-    thumbnails.innerHTML = '';
+    thumbnails.innerHTML = ''; // reset
     // show images
     ArrayImages.forEach((file, index) => {
         thumbnails.innerHTML += thumbsContent(file, index);
@@ -74,9 +74,11 @@ function renderImages() {
 }
 // show images -> html-part
 function thumbsContent(file, index) {
-    return `
+    // class        for querySelectorAll(.thumb)
+    // data-index   to count through images
+    return ` 
             <img 
-                src="./assets/images/${file}" 
+                src="./assets/images/${file}"           
                 alt="${ArrayImagesDescription[index]}"
                 class="thumb"
                 data-index="${index}"
@@ -86,24 +88,22 @@ function thumbsContent(file, index) {
 
 
 
-// onklick-event auf fotos setzen
+// open dialog
 function openDialog(index) {
     dialog.showModal();
     dialog.classList.add('opened');
 
-    // // add loop for:
-    // // Titles        in  "span"  ("dialogFileTitle")
-    // // Descriptions  in  "title" ("dialogDescription")
-    // // Images        in  "div"   ("dialogImage")
-    // // Counter       in  "span"  ("dialogCounter")
-
-    document.getElementById('dialogFileTitle').textContent = ArrayImages[index];
-    document.getElementById('dialogDescription').textContent = ArrayImagesDescription[index];
+    dialogContents(index);
+}
+function dialogContents(index) {
+    document.getElementById('dialogFileTitle').innerHTML = ArrayImages[index];
+    document.getElementById('dialogDescription').innerHTML = ArrayImagesDescription[index];
     document.getElementById('dialogImage').innerHTML =
         `<img src="./assets/images/${ArrayImages[index]}">`;
-    document.getElementById('dialogCounter').textContent =
+    document.getElementById('dialogCounter').innerHTML =
         `${parseInt(index) + 1} / ${ArrayImages.length}`;
 }
+
 
 
 
