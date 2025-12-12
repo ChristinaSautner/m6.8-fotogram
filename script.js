@@ -64,8 +64,7 @@ function renderImages() {
     ArrayImages.forEach((file, index) => {
         thumbnails.innerHTML += thumbsContent(file, index);
     });
-}
-
+} // html-part
 function thumbsContent(file, index) {
     return `
             <img 
