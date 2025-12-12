@@ -8,7 +8,8 @@
 
     <link rel="icon" href="./assets/favicon.png">
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js"></script>
+    <!-- script.js at end of body
+         to make addEventListener work -->
 </head>
 
 <body onload="renderImages()">
@@ -37,7 +38,7 @@
                 <div id="dialogImage"></div>
             </section>
             <footer>
-                <button><-</button> <!-- onclick ergänzen -->
+                <button><-< /button> <!-- onclick ergänzen -->
                         <span id="dialogImgCounter"></span>
                         <button>-></button> <!-- onclick ergänzen -->
             </footer>
@@ -51,6 +52,8 @@
         <p>© Christina Sautner</p>
     </footer>
 
+    <!-- at end to make addEventListener work -->
+    <script src="./script.js"></script>
 </body>
 
 </html>

@@ -103,3 +103,25 @@ function closeDialog() {
     dialog.close();
     dialog.classList.remove('opened');
 }
+
+
+// to close dialog when clicking outside:
+
+// for each click-event
+// script at end of body instead of head (to let addEventListener work)
+dialogRef.addEventListener('click', (event) => {  
+
+    // function gets Coordinates of dialog (height, top, position, ect.)
+    // function is already defined in DOM
+    const rect = dialogRef.getBoundingClientRect();
+
+    // if click outside of dialog, then closeDialog()
+    if (
+        event.clientX < rect.left ||
+        event.clientX > rect.right ||
+        event.clientY < rect.top ||
+        event.clientY > rect.bottom
+    ) {
+        closeDialog();
+    }
+});
