@@ -84,6 +84,7 @@ let dialogRef = document.getElementById('dialog');
 // show images as thumbnails
 function renderImages() {
     let thumbnails = document.getElementById('thumbnails');
+    thumbnails.innerHTML = '';
     thumbnails.innerHTML = ArrayImages.join('');
 }
 
