@@ -1,6 +1,6 @@
 /* MAINS */
 body {
-    background-color: rgb(61, 51, 123);
+    background-color: rgb(67 56 133);
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -15,7 +15,7 @@ body {
 
 header {
     background-color: rgb(50, 42, 104);
-    box-shadow: 0 3px 3px rgb(64, 0, 128);
+    box-shadow: 0 3px 3px rgb(54 15 93);
     display: flex;
 }
 
@@ -31,7 +31,7 @@ main {
 
 footer {
     background-color: rgb(50, 42, 104);
-    box-shadow: 3px 0 6px rgb(64, 0, 128);
+    box-shadow: 3px 0 6px rgb(54 15 93);
 
     height: 96px;
     display: flex;
@@ -82,7 +82,7 @@ figcaption {
 header img {
     height: 64px;
     width: auto;
-    margin-left: 40px;
+    margin: 16px 40px;
 }
 
 /* main */
@@ -114,32 +114,62 @@ main img:active {
 
 dialog {
     border-color: gray;
-    background-color:azure;
-    /* border: 5px solid orange;
-    transform: translateX(500px); */
+    background-color: azure;
 }
 
 dialog.opened {
-    display: block;
-    /* transform: translateX(0px);
-    transition: all 1s ease-in; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90vh;
+    width: 75vw;
 }
 
-dialog header, dialog footer {
-    /* maby cornflowerblue ??? */
-    background-color: cadetblue;    
+dialog header,
+dialog footer {
+    /* cadetblue or cornflowerblue ??? */
+    background-color: rgb(68 122 200);
     box-shadow: 3px 3px 3px rgb(42, 67, 104);
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    padding: 6px 32px;
+    gap: 24px;
+    margin-top: 0;
+}
+
+dialog header {
+    justify-content: space-between;
+}
+
+dialog header span {
+    font-size: 12px;
+}
+
+dialog section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+dialog h3 {
+    text-align: center;
+    margin: 18px;
 }
 
 dialog button {
     margin: 6px;
+    border-radius: 12px;
+    background-color: rgb(132 112 192);
+    border-color: #110d54;
 }
 
 dialog img {
-    height: 300px;
-    width: 450px;
+    height: 60vh;
+    width: auto;
+    min-width: 400px;
+    margin-bottom: 12px;
 }
 
 
@@ -173,5 +203,19 @@ footer p {
         flex-direction: column;
         justify-content: center;
         gap: 8px;
+    }
+}
+
+@media (max-width:535px) {
+    dialog header, dialog footer {
+        gap: 0;
+    }
+}
+
+@media (max-width:680px) {
+    dialog img {
+        width: 70vw;
+        height: auto;
+        min-width: 100px;
     }
 }
