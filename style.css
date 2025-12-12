@@ -129,8 +129,18 @@ dialog header, dialog footer {
     /* maby cornflowerblue ??? */
     background-color: cadetblue;    
     box-shadow: 3px 3px 3px rgb(42, 67, 104);
+    justify-content: space-around;
+    align-items: center;
 }
 
+dialog button {
+    margin: 6px;
+}
+
+dialog img {
+    height: 300px;
+    width: 450px;
+}
 
 
 
