@@ -73,6 +73,7 @@ function renderImages() {
         });
     });
 }
+
 // show images -> html-part
 function thumbsContent(file, arrayIndex) {
     // class              for querySelectorAll(.thumb)
@@ -96,6 +97,7 @@ function openDialog(clickedImageIndex) {
 
     dialogContents(clickedImageIndex);
 }
+
 function dialogContents(clickedImageIndex ) {
     document.getElementById('dialogFileTitle').innerHTML = 
         ArrayImages[clickedImageIndex];
@@ -105,7 +107,7 @@ function dialogContents(clickedImageIndex ) {
 
     document.getElementById('dialogImage').innerHTML =
         `<img src="./assets/images/${ArrayImages[clickedImageIndex]}">`;
-        
+
     document.getElementById('dialogCounter').innerHTML =
         `${parseInt(clickedImageIndex) + 1} / ${ArrayImages.length}`;
 }
