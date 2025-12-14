@@ -51,7 +51,7 @@ let ArrayImagesDescription = [
 ];
 
 
-// function openDialog() / closeDialog()
+// get dialog-field
 let dialogRef = document.getElementById('dialog');
 
 
@@ -64,6 +64,7 @@ function renderImages() {
     ArrayImages.forEach((file, arrayIndex) => {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
+    
     // onclick-event for each img
     document.querySelectorAll('.thumb').forEach(img => {
         img.addEventListener('click', () => {
@@ -74,8 +75,8 @@ function renderImages() {
 }
 // show images -> html-part
 function thumbsContent(file, arrayIndex) {
-    // class        for querySelectorAll(.thumb)
-    // data-index   to count through images
+    // class              for querySelectorAll(.thumb)
+    // data-image-index   to count through images
     return ` 
             <img 
                 src="./assets/images/${file}"           
@@ -106,6 +107,7 @@ function dialogContents(clickedImageIndex ) {
 
 
 
+// addEventListener's to indicate closeDialog()
 function closeDialog() {
     dialog.close();
     dialog.classList.remove('opened');
