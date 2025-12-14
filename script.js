@@ -145,3 +145,11 @@ dialogRef.addEventListener('keydown', (event) => {
         closeDialog();
     }
 })
+
+
+
+backwardsDialog() {};
+
+
+
+forwardsDialog() {};
