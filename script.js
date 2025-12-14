@@ -61,27 +61,27 @@ function renderImages() {
     let thumbnails = document.getElementById('thumbnails');
     thumbnails.innerHTML = ''; // reset
     // show images
-    ArrayImages.forEach((file, index) => {
-        thumbnails.innerHTML += thumbsContent(file, index);
+    ArrayImages.forEach((file, arrayIndex) => {
+        thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
     // onclick-event for each img
     document.querySelectorAll('.thumb').forEach(img => {
         img.addEventListener('click', () => {
-            let index = img.dataset.index;
-            openDialog(index);
+            let clickedImageIndex = img.dataset.imageIndex;
+            openDialog(clickedImageIndex);
         });
     });
 }
 // show images -> html-part
-function thumbsContent(file, index) {
+function thumbsContent(file, arrayIndex) {
     // class        for querySelectorAll(.thumb)
     // data-index   to count through images
     return ` 
             <img 
                 src="./assets/images/${file}"           
-                alt="${ArrayImagesDescription[index]}"
+                alt="${ArrayImagesDescription[arrayIndex]}"
                 class="thumb"
-                data-index="${index}"
+                data-image-index="${arrayIndex}"
             >
         `;
 }
@@ -89,21 +89,20 @@ function thumbsContent(file, index) {
 
 
 // open dialog
-function openDialog(index) {
+function openDialog(clickedImageIndex) {
     dialog.showModal();
     dialog.classList.add('opened');
 
-    dialogContents(index);
+    dialogContents(clickedImageIndex);
 }
-function dialogContents(index) {
-    document.getElementById('dialogFileTitle').innerHTML = ArrayImages[index];
-    document.getElementById('dialogDescription').innerHTML = ArrayImagesDescription[index];
+function dialogContents(clickedImageIndex ) {
+    document.getElementById('dialogFileTitle').innerHTML = ArrayImages[clickedImageIndex];
+    document.getElementById('dialogDescription').innerHTML = ArrayImagesDescription[clickedImageIndex];
     document.getElementById('dialogImage').innerHTML =
-        `<img src="./assets/images/${ArrayImages[index]}">`;
+        `<img src="./assets/images/${ArrayImages[clickedImageIndex]}">`;
     document.getElementById('dialogCounter').innerHTML =
-        `${parseInt(index) + 1} / ${ArrayImages.length}`;
+        `${parseInt(clickedImageIndex) + 1} / ${ArrayImages.length}`;
 }
-
 
 
 
@@ -111,6 +110,7 @@ function closeDialog() {
     dialog.close();
     dialog.classList.remove('opened');
 }
+
 
 
 // close dialog when clicking outside:
@@ -133,6 +133,7 @@ dialogRef.addEventListener('click', (event) => {
         closeDialog();
     }
 });
+
 
 // close dialog with "esc"
 dialogRef.addEventListener('keydown', (event) => {
