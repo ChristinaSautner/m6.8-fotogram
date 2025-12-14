@@ -165,6 +165,17 @@ dialog button {
     border-color: #110d54;
 }
 
+dialog button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 8px 2px lightblue;
+    /* check if 0.1s is acceptable */
+    transition: 0.1s ease-in-out;
+}
+
+dialog button:active {
+    transform: translateY(2px);
+}
+
 dialog img {
     height: 60vh;
     width: auto;
@@ -207,7 +218,9 @@ footer p {
 }
 
 @media (max-width:535px) {
-    dialog header, dialog footer {
+
+    dialog header,
+    dialog footer {
         gap: 0;
     }
 }
