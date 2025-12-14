@@ -113,9 +113,8 @@ function closeDialog() {
 }
 
 
-// to close dialog when clicking outside:
+// close dialog when clicking outside:
 
-// for each click-event
 // script at end of body instead of head (to let addEventListener work)
 dialogRef.addEventListener('click', (event) => {
 
