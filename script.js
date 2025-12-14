@@ -99,10 +99,13 @@ function openDialog(clickedImageIndex) {
 function dialogContents(clickedImageIndex ) {
     document.getElementById('dialogFileTitle').innerHTML = 
         ArrayImages[clickedImageIndex];
+
     document.getElementById('dialogDescription').innerHTML = 
         ArrayImagesDescription[clickedImageIndex];
+
     document.getElementById('dialogImage').innerHTML =
         `<img src="./assets/images/${ArrayImages[clickedImageIndex]}">`;
+        
     document.getElementById('dialogCounter').innerHTML =
         `${parseInt(clickedImageIndex) + 1} / ${ArrayImages.length}`;
 }
