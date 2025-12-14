@@ -155,8 +155,11 @@ dialogRef.addEventListener('keydown', (event) => {
 
 
 
-backwardsDialog() {};
+
+// evtl. innerhalb renderImages() und ohne onclick-event auf html...
+
+// backwardsDialog() {};
 
 
 
-forwardsDialog() {};
+// forwardsDialog() {};
