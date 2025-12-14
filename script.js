@@ -64,7 +64,7 @@ function renderImages() {
     ArrayImages.forEach((file, arrayIndex) => {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
-    
+
     // onclick-event for each img
     document.querySelectorAll('.thumb').forEach(img => {
         img.addEventListener('click', () => {
@@ -98,11 +98,11 @@ function openDialog(clickedImageIndex) {
     dialogContents(clickedImageIndex);
 }
 
-function dialogContents(clickedImageIndex ) {
-    document.getElementById('dialogFileTitle').innerHTML = 
+function dialogContents(clickedImageIndex) {
+    document.getElementById('dialogFileTitle').innerHTML =
         ArrayImages[clickedImageIndex];
 
-    document.getElementById('dialogDescription').innerHTML = 
+    document.getElementById('dialogDescription').innerHTML =
         ArrayImagesDescription[clickedImageIndex];
 
     document.getElementById('dialogImage').innerHTML =
@@ -158,8 +158,12 @@ dialogRef.addEventListener('keydown', (event) => {
 
 // evtl. innerhalb renderImages() und ohne onclick-event auf html...
 
-// backwardsDialog() {};
 
 
+// backwardsDialog(clickedImageIndex, switch) {
+//     openDialog(clickedImageIndex, -1)
+// };
 
-// forwardsDialog() {};
+// forwardsDialog(clickedImageIndex, switch) {
+//     openDialog(clickedImageIndex, +1)
+// };
