@@ -121,6 +121,7 @@ dialogRef.addEventListener('click', (event) => {
 
     // function gets Coordinates of dialog (height, top, position, ect.)
     // function is already defined in DOM
+    // rect -> rectangular path => size is specified by width and height
     const rect = dialogRef.getBoundingClientRect();
 
     // if click outside of dialog, then closeDialog()
@@ -133,3 +134,12 @@ dialogRef.addEventListener('click', (event) => {
         closeDialog();
     }
 });
+
+// close dialog with "esc"
+dialogRef.addEventListener('keydown', (event) => {
+    if (
+        event.key === "Escape"
+    ) {
+        closeDialog();
+    }
+})
