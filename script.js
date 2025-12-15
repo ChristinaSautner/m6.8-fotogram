@@ -54,6 +54,9 @@ let ArrayImagesDescription = [
 // get dialog-field
 let dialogRef = document.getElementById('dialog');
 
+// for arrow-buttons
+let slideShowCounter = 0;
+
 
 
 // create images and onclick-events
@@ -94,6 +97,8 @@ function thumbsContent(file, arrayIndex) {
 function openDialog(clickedImageIndex) {
     dialog.showModal();
     dialog.classList.add('opened');
+    // give Counter the number of named Index
+    slideShowCounter = parseInt(clickedImageIndex);
 
     dialogContents(clickedImageIndex);
 }
@@ -158,7 +163,11 @@ dialogRef.addEventListener('keydown', (event) => {
 
 // evtl. innerhalb renderImages() und ohne onclick-event auf html...
 
-
+function backwardsDialog() {
+    slideShowCounter--;
+    console.log(slideShowCounter);  //test line (see console)
+    
+}
 
 // backwardsDialog(clickedImageIndex, switch) {
 //     openDialog(clickedImageIndex, -1)
