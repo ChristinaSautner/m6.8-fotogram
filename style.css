@@ -159,10 +159,16 @@ dialog h3 {
 }
 
 dialog button {
-    margin: 6px;
-    border-radius: 12px;
+    background-color: rgb(68 122 200);
+    border: 0;
+    border-radius: 50%;
+    padding: 8px;
+    /* border-color: #110d54; */
+}
+
+dialog footer button {
     background-color: rgb(132 112 192);
-    border-color: #110d54;
+
 }
 
 dialog button:hover {
