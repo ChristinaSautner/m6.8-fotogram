@@ -166,6 +166,7 @@ dialogRef.addEventListener('keydown', (event) => {
 function backwardsDialog() {
     slideShowCounter--;
 
+    // if firstImg reached, then Counter=lastIMG
     if (slideShowCounter < 0) {
         slideShowCounter = ArrayImages.length - 1;
     }
@@ -177,6 +178,7 @@ function backwardsDialog() {
 function forwardsDialog() {
     slideShowCounter++;
 
+    // if lastIMG reached, then Counter=firstImg
     if (slideShowCounter >= ArrayImages.length) {
         slideShowCounter = 0;
     }
