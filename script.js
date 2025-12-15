@@ -165,9 +165,13 @@ dialogRef.addEventListener('keydown', (event) => {
 
 function backwardsDialog() {
     slideShowCounter--;
-    console.log(slideShowCounter);  //test line (see console)
-    
-}
+
+    if (slideShowCounter < 0) {
+        slideShowCounter = ArrayImages.length - 1;
+    }
+
+    dialogContents(slideShowCounter);
+};
 
 // backwardsDialog(clickedImageIndex, switch) {
 //     openDialog(clickedImageIndex, -1)
