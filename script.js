@@ -173,6 +173,17 @@ function backwardsDialog() {
     dialogContents(slideShowCounter);
 };
 
+
+function forwardsDialog() {
+    slideShowCounter++;
+
+    if (slideShowCounter >= ArrayImages.length) {
+        slideShowCounter = 0;
+    }
+
+    dialogContents(slideShowCounter);
+};
+
 // backwardsDialog(clickedImageIndex, switch) {
 //     openDialog(clickedImageIndex, -1)
 // };
