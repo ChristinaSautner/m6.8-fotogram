@@ -160,7 +160,7 @@ dialogRef.addEventListener('keydown', (event) => {
 
 
 
-// evtl. innerhalb renderImages() und ohne onclick-event auf html...
+// switch images (use arrow-buttons)
 
 function backwardsDialog() {
     slideShowCounter--;
@@ -173,7 +173,6 @@ function backwardsDialog() {
     dialogContents(slideShowCounter);
 };
 
-
 function forwardsDialog() {
     slideShowCounter++;
 
@@ -184,6 +183,26 @@ function forwardsDialog() {
 
     dialogContents(slideShowCounter);
 };
+
+// use arrow-buttons with keys
+
+dialogRef.addEventListener('keydown', (event) => {
+    if (
+        event.key === "ArrowLeft"
+    ) {
+        backwardsDialog();
+    }
+})
+
+dialogRef.addEventListener('keydown', (event) => {
+    if (
+        event.key === "ArrowRight"
+    ) {
+        forwardsDialog();
+    }
+})
+
+
 
 // backwardsDialog(clickedImageIndex, switch) {
 //     openDialog(clickedImageIndex, -1)
