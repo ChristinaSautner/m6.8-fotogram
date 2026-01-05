@@ -81,6 +81,7 @@ function renderImages() {
 function thumbsContent(file, arrayIndex) {
     // class              for querySelectorAll(.thumb)
     // data-image-index   to count through images
+    // tabindex           to walk through with tab-key
     return ` 
             <img 
                 src="./assets/images/${file}"           
