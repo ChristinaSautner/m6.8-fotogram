@@ -197,13 +197,3 @@ dialogRef.addEventListener('keydown', (event) => {
         forwardsDialog();
     }
 })
-
-
-
-// backwardsDialog(clickedImageIndex, switch) {
-//     openDialog(clickedImageIndex, -1)
-// };
-
-// forwardsDialog(clickedImageIndex, switch) {
-//     openDialog(clickedImageIndex, +1)
-// };
