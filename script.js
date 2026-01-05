@@ -92,7 +92,6 @@ function thumbsContent(file, arrayIndex) {
 }
 
 
-
 // open dialog
 function openDialog(clickedImageIndex) {
     dialog.showModal();
