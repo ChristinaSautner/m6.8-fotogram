@@ -90,13 +90,15 @@ function thumbsContent(file, arrayIndex) {
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
     return ` 
-            <img 
-                src="./assets/images/${file}"           
-                alt="${ArrayImagesDescription[arrayIndex]}"
-                class="thumb"
-                tabindex="0"
-                data-image-index="${arrayIndex}"
-            >
+            <button>
+                <img 
+                    src="./assets/images/${file}"           
+                   alt="${ArrayImagesDescription[arrayIndex]}"
+                    class="thumb"
+                    tabindex="0"
+                    data-image-index="${arrayIndex}"
+                >
+            </button>        
         `;
 }
 

@@ -93,6 +93,12 @@ main div {
     gap: 24px;
 }
 
+main button {
+    border: none;
+    padding: 0;
+    background: none;
+}
+
 main img {
     height: 166px;
     width: 166px;
