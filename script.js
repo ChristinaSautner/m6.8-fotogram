@@ -86,6 +86,7 @@ function thumbsContent(file, arrayIndex) {
                 src="./assets/images/${file}"           
                 alt="${ArrayImagesDescription[arrayIndex]}"
                 class="thumb"
+                tabindex="0"
                 data-image-index="${arrayIndex}"
             >
         `;
