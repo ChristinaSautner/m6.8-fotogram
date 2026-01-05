@@ -68,12 +68,19 @@ function renderImages() {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
 
-    // onclick-event for each img
     document.querySelectorAll('.thumb').forEach(img => {
+        // open dialog with onclick
         img.addEventListener('click', () => {
             let clickedImageIndex = img.dataset.imageIndex;
             openDialog(clickedImageIndex);
         });
+        // // open dialog with enter-key
+        // img.addEventListener('keydown', (event) => {
+        //     if (event.key === "Enter") {
+        //         let enteredImageIndex = img.dataset.imageIndex;
+        //         openDialog(enteredImageIndex);
+        //     }
+        // });     FUNKTIONIERT NICHT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     });
 }
 
@@ -199,6 +206,3 @@ dialogRef.addEventListener('keydown', (event) => {
         forwardsDialog();
     }
 })
-
-
-// open dialog with enter-key
