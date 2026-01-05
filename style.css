@@ -97,6 +97,8 @@ main button {
     border: none;
     padding: 0;
     background: none;
+    border-radius: 18px;
+
 }
 
 main img {

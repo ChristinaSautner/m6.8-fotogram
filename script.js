@@ -68,19 +68,19 @@ function renderImages() {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
 
-    document.querySelectorAll('.thumb').forEach(img => {
+    document.querySelectorAll('.thumb-btn').forEach(btn => {
         // open dialog with onclick
-        img.addEventListener('click', () => {
-            let clickedImageIndex = img.dataset.imageIndex;
+        btn.addEventListener('click', () => {
+            let clickedImageIndex = btn.dataset.imageIndex;
             openDialog(clickedImageIndex);
         });
-        // // open dialog with enter-key
-        // img.addEventListener('keydown', (event) => {
-        //     if (event.key === "Enter") {
-        //         let enteredImageIndex = img.dataset.imageIndex;
-        //         openDialog(enteredImageIndex);
-        //     }
-        // });     FUNKTIONIERT NICHT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // open dialog with enter-key                   WORKS JUST WHEN USING BREAKPOINTS AT DEV-TOOLS... why???????
+         btn.addEventListener('keydown', (event) => {
+             if (event.key === "Enter") {
+                 let enteredImageIndex = btn.dataset.imageIndex;
+                 openDialog(enteredImageIndex);
+             }
+         }); 
     });
 }
 
@@ -90,13 +90,10 @@ function thumbsContent(file, arrayIndex) {
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
     return ` 
-            <button>
+            <button class="thumb-btn" data-image-index="${arrayIndex}">
                 <img 
                     src="./assets/images/${file}"           
-                   alt="${ArrayImagesDescription[arrayIndex]}"
-                    class="thumb"
-                    tabindex="0"
-                    data-image-index="${arrayIndex}"
+                    alt="${ArrayImagesDescription[arrayIndex]}"
                 >
             </button>        
         `;
