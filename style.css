@@ -170,9 +170,13 @@ dialog button {
     font-size: 18px;
 }
 
+dialog footer span {
+    color: lightblue;
+}
+
 dialog footer button {
-    background-color: rgb(132 112 192);
-    color: rgb(105, 0, 128);
+    background-color: rgb(62 127 220);
+    color: darkblue;
     height: 38px;
 }
 
@@ -211,6 +215,14 @@ footer p {
 
 
 /* MEDIA-QUERIES */
+@media (max-width:680px) {
+    dialog img {
+        width: 75vw;
+        height: auto;
+        min-width: 100px;
+    }
+}
+
 @media (max-width:435px) {
     header {
         justify-content: center;
@@ -219,27 +231,5 @@ footer p {
     header img {
         height: 48px;
         margin: 0;
-    }
-
-    footer {
-        flex-direction: column;
-        justify-content: center;
-        gap: 8px;
-    }
-}
-
-@media (max-width:535px) {
-
-    dialog header,
-    dialog footer {
-        gap: 0;
-    }
-}
-
-@media (max-width:680px) {
-    dialog img {
-        width: 70vw;
-        height: auto;
-        min-width: 100px;
     }
 }
