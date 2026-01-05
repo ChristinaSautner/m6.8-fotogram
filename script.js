@@ -160,8 +160,6 @@ dialogRef.addEventListener('keydown', (event) => {
 })
 
 
-
-
 // switch images (use arrow-buttons)
 function backwardsDialog() {
     slideShowCounter--;
@@ -173,6 +171,7 @@ function backwardsDialog() {
 
     dialogContents(slideShowCounter);
 };
+
 function forwardsDialog() {
     slideShowCounter++;
 
@@ -183,6 +182,7 @@ function forwardsDialog() {
 
     dialogContents(slideShowCounter);
 };
+
 
 // use arrow-buttons with keys
 dialogRef.addEventListener('keydown', (event) => {
@@ -199,3 +199,6 @@ dialogRef.addEventListener('keydown', (event) => {
         forwardsDialog();
     }
 })
+
+
+// open dialog with enter-key
