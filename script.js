@@ -115,14 +115,14 @@ function thumbsContent(file, arrayIndex) {
 
 
 // open dialog
-function openDialog(ImageIndex) {
+function openDialog(imageIndex) {
     // sets focus to specific thumb (important for focusing after closing dialog)
-    lastThumb = document.querySelector(`[data-image-index="${ImageIndex}"]`);
+    lastThumb = document.querySelector(`[data-image-index="${imageIndex}"]`);
     // opens dialog
     dialog.showModal();
     dialog.classList.add('opened');
     // give Counter the number of named Index
-    slideShowCounter = parseInt(ImageIndex);
+    slideShowCounter = parseInt(imageIndex);
     dialogContents(slideShowCounter);
     // to make keyboard-navigation work
     document.getElementById("btnPrevImg").focus();  // dialog.focus(); -> focus sets on dialog-tab
