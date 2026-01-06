@@ -100,6 +100,7 @@ function renderImages() {
 
 // show images -> html-part
 function thumbsContent(file, arrayIndex) {
+
     // class              for querySelectorAll(.thumb-btn)
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
@@ -118,11 +119,10 @@ function thumbsContent(file, arrayIndex) {
 function openDialog(imageIndex) {
     dialog.showModal();
     dialog.classList.add('opened');
+
     // give Counter the number of named Index
     slideShowCounter = parseInt(imageIndex);
     dialogContents(slideShowCounter);
-    // to make keyboard-navigation work
-    document.getElementById("btnPrevImg").focus();  // dialog.focus(); -> focus sets on dialog-tab
 }
 
 function dialogContents(slideShowCounter) {
@@ -145,6 +145,7 @@ function dialogContents(slideShowCounter) {
 function closeDialog() {
     dialog.close();
     dialog.classList.remove('opened');
+
     // focus on current thumbnail-img after dialog closes
     currentThumb = document.querySelector(`[data-image-index="${slideShowCounter}"]`);
     if (currentThumb) currentThumb.focus();
@@ -153,7 +154,8 @@ function closeDialog() {
 
 // dialog: navigate through images (use arrow-buttons)
 function backwardsDialog() {
-    slideShowCounter--;    
+    slideShowCounter--;   
+
     // if firstImg reached, then Counter=lastIMG
     if (slideShowCounter < 0) {
         slideShowCounter = ArrayImages.length - 1;
@@ -163,6 +165,7 @@ function backwardsDialog() {
 
 function forwardsDialog() {
     slideShowCounter++;
+    
     // if lastIMG reached, then Counter=firstImg
     if (slideShowCounter >= ArrayImages.length) {
         slideShowCounter = 0;
