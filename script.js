@@ -115,14 +115,14 @@ function thumbsContent(file, arrayIndex) {
 
 
 // open dialog
-function openDialog(clickedImageIndex) {
+function openDialog(ImageIndex) {
     // sets focus to specific thumb (important for focusing after closing dialog)
-    lastThumb = document.querySelector(`[data-image-index="${clickedImageIndex}"]`);
+    lastThumb = document.querySelector(`[data-image-index="${ImageIndex}"]`);
     // opens dialog
     dialog.showModal();
     dialog.classList.add('opened');
     // give Counter the number of named Index
-    slideShowCounter = parseInt(clickedImageIndex);
+    slideShowCounter = parseInt(ImageIndex);
     dialogContents(slideShowCounter);
     // to make keyboard-navigation work
     document.getElementById("btnPrevImg").focus();  // dialog.focus(); -> focus sets on dialog-tab
@@ -156,7 +156,7 @@ function closeDialog() {
 
 // dialog: navigate through images (use arrow-buttons)
 function backwardsDialog() {
-    slideShowCounter--;
+    slideShowCounter--;    
     // if firstImg reached, then Counter=lastIMG
     if (slideShowCounter < 0) {
         slideShowCounter = ArrayImages.length - 1;
