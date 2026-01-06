@@ -93,14 +93,6 @@ main div {
     gap: 24px;
 }
 
-main button {
-    border: none;
-    padding: 0;
-    background: none;
-    border-radius: 18px;
-
-}
-
 main img {
     height: 166px;
     width: 166px;
@@ -108,7 +100,14 @@ main img {
     object-fit: cover;
 }
 
-main img:hover {
+main button {
+    border: none;
+    padding: 0;
+    background: none;
+    border-radius: 18px;
+}
+
+main button:hover {
     cursor: pointer;
     box-shadow: 0 0 8px 2px lightblue;
     /* check if 0.1s is acceptable */
@@ -116,7 +115,7 @@ main img:hover {
 
 }
 
-main img:active {
+main button:active {
     transform: translateY(2px);
 }
 
