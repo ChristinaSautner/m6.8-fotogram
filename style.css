@@ -222,9 +222,9 @@ footer p {
 
 
 /* MEDIA-QUERIES */
-@media (max-width:680px) {
+@media (max-width:785px) {
     dialog img {
-        width: 75vw;
+        width: 70vw;
         height: auto;
         min-width: 100px;
     }
