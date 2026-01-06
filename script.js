@@ -116,9 +116,6 @@ function thumbsContent(file, arrayIndex) {
 
 // open dialog
 function openDialog(imageIndex) {
-    // sets focus to specific thumb (important for focusing after closing dialog)
-    lastThumb = document.querySelector(`[data-image-index="${imageIndex}"]`);
-    // opens dialog
     dialog.showModal();
     dialog.classList.add('opened');
     // give Counter the number of named Index
@@ -146,11 +143,11 @@ function dialogContents(slideShowCounter) {
 
 
 function closeDialog() {
-    // closes dialog
     dialog.close();
     dialog.classList.remove('opened');
-    // focus on specific thumbnail-img after dialog closes
-    if (lastThumb) lastThumb.focus();
+    // focus on current thumbnail-img after dialog closes
+    currentThumb = document.querySelector(`[data-image-index="${slideShowCounter}"]`);
+    if (currentThumb) currentThumb.focus();
 }
 
 
