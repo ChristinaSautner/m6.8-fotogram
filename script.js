@@ -50,6 +50,9 @@ let ArrayImagesDescription = [
     "Zebras in Greens"
 ];
 
+// script.js at end of body instead of head (to let addEventListener work)
+
+
 
 // get dialog-field
 let dialogRef = document.getElementById('dialog');
@@ -68,36 +71,40 @@ function renderImages() {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
 
-    document.querySelectorAll('.thumb-btn').forEach(btn => {
+    document.querySelectorAll('.thumb-btn').forEach((btn, index, allBtns) => {
+
         // open dialog with onclick
         btn.addEventListener('click', () => {
-            let clickedImageIndex = btn.dataset.imageIndex;
-            openDialog(clickedImageIndex);
+            openDialog(index);
         });
-        // open dialog with enter-key       WORKS JUST WHEN USING BREAKPOINTS AT DEV-TOOLS... why???????
-        // navigating with keys                   
-         btn.addEventListener('keydown', (event) => {
-             if (event.key === "Enter") {
-                 let enteredImageIndex = btn.dataset.imageIndex;
-                 openDialog(enteredImageIndex);
-             } if (event.key === "ArrowLeft" && btn.dataset.imageIndex-1 >= 0) {
-                enteredImageIndex = btn.dataset.imageIndex-1;
-             } if (event.key === "ArrowLeft" && btn.dataset.imageIndex-1 < 0) {
-                enteredImageIndex = ArrayImages.length -1;
-             } if (event.key === "ArrowRight") {
-                event.key == "Tab";
-             }
-         }); 
+
+        btn.addEventListener('keydown', (event) => {
+
+            // navigate through thumbnails with "->"
+            if (event.key === "ArrowRight") {
+                event.preventDefault();
+                let next = (index + 1) % allBtns.length;
+                allBtns[next].focus();
+            }
+
+            // navigate through thumbnails with "<-"
+            if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                let prev = (index - 1 + allBtns.length) % allBtns.length;
+                allBtns[prev].focus();
+            }
+
+        });
     });
 }
 
 // show images -> html-part
 function thumbsContent(file, arrayIndex) {
-    // class              for querySelectorAll(.thumb)
+    // class              for querySelectorAll(.thumb-btn)
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
     return ` 
-            <button class="thumb-btn" data-image-index="${arrayIndex}">
+            <button class="thumb-btn" data-image-index="${arrayIndex}" tabindex="0">
                 <img 
                     src="./assets/images/${file}"           
                     alt="${ArrayImagesDescription[arrayIndex]}"
@@ -109,106 +116,103 @@ function thumbsContent(file, arrayIndex) {
 
 // open dialog
 function openDialog(clickedImageIndex) {
+    // sets focus to specific thumb (important for focusing after closing dialog)
+    lastThumb = document.querySelector(`[data-image-index="${clickedImageIndex}"]`);
+    // opens dialog
     dialog.showModal();
     dialog.classList.add('opened');
     // give Counter the number of named Index
     slideShowCounter = parseInt(clickedImageIndex);
-
-    dialogContents(clickedImageIndex);
+    dialogContents(slideShowCounter);
+    // to make keyboard-navigation work
+    document.getElementById("btnPrevImg").focus();  // dialog.focus(); -> focus sets on dialog-tab
 }
 
-function dialogContents(clickedImageIndex) {
+function dialogContents(slideShowCounter) {
     document.getElementById('dialogFileTitle').innerHTML =
-        ArrayImages[clickedImageIndex];
+        ArrayImages[slideShowCounter];
 
     document.getElementById('dialogDescription').innerHTML =
-        ArrayImagesDescription[clickedImageIndex];
+        ArrayImagesDescription[slideShowCounter];
 
     document.getElementById('dialogImage').innerHTML =
-        `<img src="./assets/images/${ArrayImages[clickedImageIndex]}">`;
+        `<img src="./assets/images/${ArrayImages[slideShowCounter]}">`;
 
     document.getElementById('dialogCounter').innerHTML =
-        `${parseInt(clickedImageIndex) + 1} / ${ArrayImages.length}`;
+        `${parseInt(slideShowCounter) + 1} / ${ArrayImages.length}`;
 }
 
 
 
-// addEventListener's to indicate closeDialog()
+
 function closeDialog() {
+    // closes dialog
     dialog.close();
     dialog.classList.remove('opened');
+    // focus on specific thumbnail-img after dialog closes
+    if (lastThumb) lastThumb.focus();
 }
 
 
-
-// close dialog when clicking outside:
-
-// script at end of body instead of head (to let addEventListener work)
-dialogRef.addEventListener('click', (event) => {
-
-    // function gets Coordinates of dialog (height, top, position, ect.)
-    // function is already defined in DOM
-    // rect -> rectangular path => size is specified by width and height
-    const rect = dialogRef.getBoundingClientRect();
-
-    // if click outside of dialog, then closeDialog()
-    if (
-        event.clientX < rect.left ||
-        event.clientX > rect.right ||
-        event.clientY < rect.top ||
-        event.clientY > rect.bottom
-    ) {
-        closeDialog();
-    }
-});
-
-
-// close dialog with "esc"
-dialogRef.addEventListener('keydown', (event) => {
-    if (
-        event.key === "Escape"
-    ) {
-        closeDialog();
-    }
-})
-
-
-// switch images (use arrow-buttons)
+// dialog: navigate through images (use arrow-buttons)
 function backwardsDialog() {
     slideShowCounter--;
-
     // if firstImg reached, then Counter=lastIMG
     if (slideShowCounter < 0) {
         slideShowCounter = ArrayImages.length - 1;
     }
-
     dialogContents(slideShowCounter);
 };
 
 function forwardsDialog() {
     slideShowCounter++;
-
     // if lastIMG reached, then Counter=firstImg
     if (slideShowCounter >= ArrayImages.length) {
         slideShowCounter = 0;
     }
-
     dialogContents(slideShowCounter);
 };
 
 
-// use arrow-buttons with keys
-dialogRef.addEventListener('keydown', (event) => {
-    if (
-        event.key === "ArrowLeft"
-    ) {
-        backwardsDialog();
+// // // WORKS NOT FOR USAGE OF KEYS (event.client always says 0.0!) // // //
+// // close dialog when clicking outside:           
+
+// dialogRef.addEventListener('click', (event) => {
+
+// // function gets Coordinates of dialog (height, top, position, ect.)
+// // function is already defined in DOM
+// // rect -> rectangular path => size is specified by width and height
+
+//     const rect = dialogRef.getBoundingClientRect();
+
+// // when click outside of dialog, then closeDialog()
+
+//     if (
+//         event.clientX < rect.left ||
+//         event.clientX > rect.right ||
+//         event.clientY < rect.top ||
+//         event.clientY > rect.bottom
+//     ) {
+//         closeDialog();
+//     }
+// });      
+
+
+// close dialog when clicking outside (don't close when using keys):
+// event.target         Element, welches angeklickt wird (ohne Bubbling-Effekt)
+dialogRef.addEventListener('click', (event) => {
+    if (event.target === dialogRef) {
+        closeDialog();
     }
-})
+});     // Übersetzt:
+// „Schließe den Dialog nur wenn Klick auf Dialog-Fläche selbst!
+// -> nur gaaaaanz am DialogRand! (Innenleben = Header, Section, Footer)
+
+
+
+// run dialog with keys
 dialogRef.addEventListener('keydown', (event) => {
-    if (
-        event.key === "ArrowRight"
-    ) {
-        forwardsDialog();
-    }
+    if (event.key === "Escape") { closeDialog(); }
+    if (event.key === "ArrowLeft") { backwardsDialog(); }
+    if (event.key === "ArrowRight") { forwardsDialog(); }
 })

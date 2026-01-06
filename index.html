@@ -27,7 +27,7 @@
         <!-- div für fotoliste -->
         <div id="thumbnails"></div>
         <!-- dialog für Großbild -->
-        <dialog id="dialog">
+        <dialog id="dialog" tabindex="-1">
             <header>
                 <span id="dialogFileTitle"></span>
                 <button onclick="closeDialog()"> <b>&#x58</b> </button>
@@ -37,9 +37,9 @@
                 <div id="dialogImage"></div>
             </section>
             <footer>
-                <button onclick="backwardsDialog()"> <b>&#x2190</b> </button> <!-- onclick ergänzen -->
+                <button id="btnPrevImg" onclick="backwardsDialog()"> <b>&#x2190</b> </button> <!-- onclick ergänzen -->
                 <span id="dialogCounter"></span>
-                <button onclick="forwardsDialog()"> <b>&#x2192</b> </button> <!-- onclick ergänzen -->
+                <button id="btnNextImg" onclick="forwardsDialog()"> <b>&#x2192</b> </button> <!-- onclick ergänzen -->
             </footer>
         </dialog>
     </main>
