@@ -74,11 +74,18 @@ function renderImages() {
             let clickedImageIndex = btn.dataset.imageIndex;
             openDialog(clickedImageIndex);
         });
-        // open dialog with enter-key                   WORKS JUST WHEN USING BREAKPOINTS AT DEV-TOOLS... why???????
+        // open dialog with enter-key       WORKS JUST WHEN USING BREAKPOINTS AT DEV-TOOLS... why???????
+        // navigating with keys                   
          btn.addEventListener('keydown', (event) => {
              if (event.key === "Enter") {
                  let enteredImageIndex = btn.dataset.imageIndex;
                  openDialog(enteredImageIndex);
+             } if (event.key === "ArrowLeft" && btn.dataset.imageIndex-1 >= 0) {
+                enteredImageIndex = btn.dataset.imageIndex-1;
+             } if (event.key === "ArrowLeft" && btn.dataset.imageIndex-1 < 0) {
+                enteredImageIndex = ArrayImages.length -1;
+             } if (event.key === "ArrowRight") {
+                event.key == "Tab";
              }
          }); 
     });
