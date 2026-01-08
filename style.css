@@ -166,6 +166,13 @@ dialog h3 {
     margin: 18px;
 }
 
+dialog img {
+    height: 60vh;
+    width: auto;
+    min-width: 400px;
+    margin-bottom: 12px;
+}
+
 dialog button {
     background-color: rgb(34 89 167);
     color: lightblue;
@@ -198,12 +205,7 @@ dialog button:active {
     transform: translateY(2px);
 }
 
-dialog img {
-    height: 60vh;
-    width: auto;
-    min-width: 400px;
-    margin-bottom: 12px;
-}
+
 
 
 
