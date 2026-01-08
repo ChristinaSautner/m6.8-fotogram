@@ -70,7 +70,7 @@ function renderImages() {
     ArrayImages.forEach((file, arrayIndex) => {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
-
+    // (element, index, array) -> btn zur Nutzung spezifisch, allBtns zum Arbeiten mit Liste (navigation)
     document.querySelectorAll('.thumb-btn').forEach((btn, index, allBtns) => {
 
         // open dialog with onclick
@@ -147,6 +147,7 @@ function closeDialog() {
     dialog.classList.remove('opened');
 
     // focus on current thumbnail-img after dialog closes
+    // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
     currentThumb = document.querySelector(`[data-image-index="${slideShowCounter}"]`);
     if (currentThumb) currentThumb.focus();
 }
