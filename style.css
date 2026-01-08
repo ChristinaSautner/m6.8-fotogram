@@ -205,6 +205,11 @@ dialog button:active {
     transform: translateY(2px);
 }
 
+dialog::backdrop {
+    /* !==opacity -> über rgb wird Inhalt nicht transparent */
+    background-color: rgb(50 42 104 / 81%);
+}
+
 
 
 
