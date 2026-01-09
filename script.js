@@ -105,7 +105,7 @@ function thumbsContent(file, arrayIndex) {
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
     return ` 
-            <button class="thumb-btn" data-image-index="${arrayIndex}" tabindex="0">
+            <button class="thumb-btn" data-image-index="${arrayIndex}" tabindex="0" aria-haspopup="dialog">
                 <img 
                     src="./assets/images/${file}"           
                     alt="${ArrayImagesDescription[arrayIndex]}"
