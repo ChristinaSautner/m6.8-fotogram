@@ -28,19 +28,19 @@
         <div id="thumbnails"></div>
 
         <!-- dialog für Großbild -->
-        <dialog id="dialog" tabindex="-1">
+        <dialog id="dialog" tabindex="-1" aria-labelledby="dialogDescription" aria-describedby="dialogImage">
             <header>
                 <span id="dialogFileTitle"></span>
-                <button onclick="closeDialog()"> <b>&#x58</b> </button>
+                <button onclick="closeDialog()" aria-label="dialogClose"> <b>&#x58</b> </button>
             </header>
             <section>
                 <h3 id="dialogDescription"></h3>
-                <div id="dialogImage"></div>
+                <div id="dialogImage" aria-describedby="dialogFileTitle"></div>
             </section>
             <footer>
-                <button onclick="backwardsDialog()"> <b>&#x2190</b> </button> <!-- onclick ergänzen -->
+                <button onclick="backwardsDialog()" aria-label="dialogPreviousImage"> <b>&#x2190</b> </button> <!-- onclick ergänzen -->
                 <span id="dialogCounter"></span>
-                <button onclick="forwardsDialog()"> <b>&#x2192</b> </button> <!-- onclick ergänzen -->
+                <button onclick="forwardsDialog()" aria-label="dialogNextImage"> <b>&#x2192</b> </button> <!-- onclick ergänzen -->
             </footer>
         </dialog>
 
