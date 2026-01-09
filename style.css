@@ -137,6 +137,7 @@ dialog footer {
     /* cadetblue or cornflowerblue ??? */
     background-color: rgb(34 89 167);
     box-shadow: 3px 3px 3px rgb(42, 67, 104);
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 6px 32px;
@@ -244,6 +245,12 @@ footer p {
 
     header img {
         height: 48px;
-        margin: 0;
+        margin: 16px 0;
+    }
+
+    footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
     }
 }
