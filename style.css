@@ -150,7 +150,7 @@ dialog header {
 }
 
 dialog header span {
-    font-size: 12px;
+    font-size: 16px;
     color: lightblue;
 }
 
@@ -164,6 +164,7 @@ dialog section {
 
 dialog h3 {
     text-align: center;
+    font-size: 24px;
     margin: 18px;
 }
 
