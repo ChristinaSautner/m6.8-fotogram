@@ -120,6 +120,7 @@ let slideShowCounter = 0;
 
 
 // to do renderThumbnails with filtered arrays
+// to also render h1-titles
 function renderFiltered(i) {
     // for specific h1-title
     let h1 = document.getElementById('title');
