@@ -23,7 +23,7 @@
 
     <main>
         <!-- <h1>Einblicke in die Natur</h1> -->
-         <button onclick="renderFiltered('nature')">Einblicke in die Natur</button>
+        <button onclick="renderFiltered('nature')">Einblicke in die Natur</button>
         <button onclick="renderFiltered('japan')">Einblicke in Japans Kultur</button>
 
         <!-- div für fotoliste -->
@@ -40,9 +40,11 @@
                 <div id="dialogImage" aria-describedby="dialogDescription"></div>
             </section>
             <footer>
-                <button onclick="backwardsDialog()" aria-label="dialogPreviousImage"> <b>&#x2190</b> </button> <!-- onclick ergänzen -->
+                <button onclick="backwardsDialog()" aria-label="dialogPreviousImage"> <b>&#x2190</b> </button>
+                <!-- onclick ergänzen -->
                 <span id="dialogCounter"></span>
-                <button onclick="forwardsDialog()" aria-label="dialogNextImage"> <b>&#x2192</b> </button> <!-- onclick ergänzen -->
+                <button onclick="forwardsDialog()" aria-label="dialogNextImage"> <b>&#x2192</b> </button>
+                <!-- onclick ergänzen -->
             </footer>
         </dialog>
 
