@@ -12,7 +12,7 @@
          to make addEventListener work -->
 </head>
 
-<body onload="renderImages()">
+<body>
 
     <header>
         <figure>
@@ -22,7 +22,9 @@
     </header>
 
     <main>
-        <h1>Einblicke in die Natur</h1>
+        <!-- <h1>Einblicke in die Natur</h1> -->
+         <button onclick="renderFiltered('nature')">Einblicke in die Natur</button>
+        <button onclick="renderFiltered('japan')">Einblicke in Japans Kultur</button>
 
         <!-- div für fotoliste -->
         <div id="thumbnails"></div>

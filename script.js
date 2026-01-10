@@ -1,4 +1,4 @@
-let ArrayImages = [
+let arrayImagesNature = [
     'beach-mountain-snow-sand.jpg',
     'chow-chow-dogs-car.jpg',
     'cloud-sea-village.jpg',
@@ -24,9 +24,9 @@ let ArrayImages = [
     'zebras.jpg'
 ];
 
-let ArrayImagesDescription = [
+let arrayDescriptionsNature = [
     "Beach in front of a Mountain",
-    "dogs enjoying the cool breeze",
+    "Dogs enjoying the cool breeze",
     "Ocean of Clouds",
     "fuzzy Crow",
     "Crow",
@@ -50,24 +50,98 @@ let ArrayImagesDescription = [
     "Zebras in Greens"
 ];
 
+let arrayImagesJapan = [
+    'castle.jpg',
+    'fuji-san-flower-field.jpg',
+    'fuji-san-temple.jpg',
+    'japanese-streets.jpg',
+    'karate-fighter.jpg',
+    'kimono.jpg',
+    'lake-trees-fall.jpg',
+    'lampignon.jpg',
+    'matcha.jpg',
+    'mitarashi-dango.jpg',
+    'onigiri.jpg',
+    'onsen-winter.jpg',
+    'ricefield.jpg',
+    'sake-production.jpg',
+    'sakura-mochi.jpg',
+    'shinto-shrine.jpg',
+    'sumo-fighters.jpg',
+    'sushi.jpg',
+    'temple-forrest- sun-rays.jpg',
+    'temple-impressive.jpg',
+    'tokyo.jpg'
+];
+
+let arrayDescriptionsJapan = [
+    "old castle",
+    "field of Flowers with Fuji-San in the distance",
+    "old Temple with Fuji-San in the distance",
+    "small Street with lampignons",
+    "karate Fighter at sunset",
+    "Kimonos - traditional garment",
+    "beautiful Lake in fall",
+    "Lampignion",
+    "traditional Matcha - japanese green tea",
+    "mitarashi dango - japanese candy",
+    "Onigiri - filled riche balls",
+    "Onsen in winter - hot spring",
+    "rice field",
+    "Sake production - traditional rice wine",
+    "sakura mochi - traditional candy",
+    "shinto shrine",
+    "sumo fighters",
+    "Sushi",
+    "wooden Temple in Forests",
+    "impressive Temple",
+    "big crossing in Tokyo"
+];
+
 // script.js at end of body instead of head (to let addEventListener work)
 
 
 
+// to switch between arrays
+let arrayImagesCurrent = [];
+let arrayDescriptionsCurrent = [];
+
 // get dialog-field
 let dialogRef = document.getElementById('dialog');
 
-// for arrow-buttons
+// for dialog arrow-buttons
 let slideShowCounter = 0;
 
 
 
+// to do renderThumbnails with filtered arrays
+function renderFiltered(i) {
+    if (i == 'nature') {
+        arrayImagesCurrent = '';
+        arrayImagesCurrent = arrayImagesNature;
+
+        arrayDescriptionsCurrent = '';
+        arrayDescriptionsCurrent = arrayDescriptionsNature;
+
+        renderThumbnails(i);
+    }
+    if (i == 'japan') {
+        arrayImagesCurrent = '';
+        arrayImagesCurrent = arrayImagesJapan;
+
+        arrayDescriptionsCurrent = '';
+        arrayDescriptionsCurrent = arrayDescriptionsJapan;
+
+        renderThumbnails(i);
+    }
+}
+
 // create images and onclick-events
-function renderImages() {
+function renderThumbnails() {
     let thumbnails = document.getElementById('thumbnails');
     thumbnails.innerHTML = ''; // reset
     // show images
-    ArrayImages.forEach((file, arrayIndex) => {
+    arrayImagesCurrent.forEach((file, arrayIndex) => {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
     // (element, index, array) -> btn zur Nutzung spezifisch, allBtns zum Arbeiten mit Liste (navigation)
@@ -108,7 +182,7 @@ function thumbsContent(file, arrayIndex) {
             <button class="thumb-btn" data-image-index="${arrayIndex}" tabindex="0" aria-haspopup="dialog">
                 <img 
                     src="./assets/images/${file}"           
-                    alt="${ArrayImagesDescription[arrayIndex]}"
+                    alt="${arrayDescriptionsCurrent[arrayIndex]}"
                 >
             </button>        
         `;
@@ -127,16 +201,16 @@ function openDialog(imageIndex) {
 
 function dialogContents(slideShowCounter) {
     document.getElementById('dialogFileTitle').innerHTML =
-        ArrayImages[slideShowCounter];
+        arrayImagesCurrent[slideShowCounter];
 
     document.getElementById('dialogDescription').innerHTML =
-        ArrayImagesDescription[slideShowCounter];
+        arrayDescriptionsCurrent[slideShowCounter];
 
     document.getElementById('dialogImage').innerHTML =
-        `<img src="./assets/images/${ArrayImages[slideShowCounter]}">`;
+        `<img src="./assets/images/${arrayImagesCurrent[slideShowCounter]}">`;
 
     document.getElementById('dialogCounter').innerHTML =
-        `${parseInt(slideShowCounter) + 1} / ${ArrayImages.length}`;
+        `${parseInt(slideShowCounter) + 1} / ${arrayImagesCurrent.length}`;
 }
 
 
@@ -155,20 +229,20 @@ function closeDialog() {
 
 // dialog: navigate through images (use arrow-buttons)
 function backwardsDialog() {
-    slideShowCounter--;   
+    slideShowCounter--;
 
     // if firstImg reached, then Counter=lastIMG
     if (slideShowCounter < 0) {
-        slideShowCounter = ArrayImages.length - 1;
+        slideShowCounter = arrayImagesCurrent.length - 1;
     }
     dialogContents(slideShowCounter);
 };
 
 function forwardsDialog() {
     slideShowCounter++;
-    
+
     // if lastIMG reached, then Counter=firstImg
-    if (slideShowCounter >= ArrayImages.length) {
+    if (slideShowCounter >= arrayImagesCurrent.length) {
         slideShowCounter = 0;
     }
     dialogContents(slideShowCounter);
