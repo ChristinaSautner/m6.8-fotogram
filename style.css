@@ -86,6 +86,14 @@ header img {
 }
 
 /* main */
+.filterBtns {
+    background-color: cadetblue;
+    border-style: outset;
+    border-color: cornflowerblue;
+    padding: 12px;
+    font-family: 'Josefin Sans';
+}
+
 main div {
     display: flex;
     flex-wrap: wrap;

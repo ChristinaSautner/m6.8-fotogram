@@ -105,6 +105,11 @@ let arrayDescriptionsJapan = [
 // to switch between arrays
 let arrayImagesCurrent = [];
 let arrayDescriptionsCurrent = [];
+// to switch between h1-titles
+let titleNature = 'Einblicke in die Natur';
+let titleJapan = 'Einblicke in Kultur und Kulinarik Japans';
+
+
 
 // get dialog-field
 let dialogRef = document.getElementById('dialog');
@@ -116,6 +121,10 @@ let slideShowCounter = 0;
 
 // to do renderThumbnails with filtered arrays
 function renderFiltered(i) {
+    // for specific h1-title
+    let h1 = document.getElementById('title');
+    h1.innerHTML = '';
+
     if (i == 'nature') {
         arrayImagesCurrent = '';
         arrayImagesCurrent = arrayImagesNature;
@@ -123,6 +132,7 @@ function renderFiltered(i) {
         arrayDescriptionsCurrent = '';
         arrayDescriptionsCurrent = arrayDescriptionsNature;
 
+        h1.innerHTML = titleNature;
         renderThumbnails(i);
     }
     if (i == 'japan') {
@@ -132,9 +142,11 @@ function renderFiltered(i) {
         arrayDescriptionsCurrent = '';
         arrayDescriptionsCurrent = arrayDescriptionsJapan;
 
+        h1.innerHTML = titleJapan;
         renderThumbnails(i);
     }
 }
+
 
 // create images and onclick-events
 function renderThumbnails() {
