@@ -146,7 +146,6 @@ document.querySelectorAll('.filterBtns').forEach((btn, index, allBtns) => {
 
 
 
-
 // to do renderThumbnails with filtered arrays
 // to also render h1-titles
 function renderFiltered(i) {
@@ -176,7 +175,6 @@ function renderFiltered(i) {
         renderThumbnails(i);
     }
 
-
     // use ArrowKeys to swich trough .thumbBtns and between .thumbBtns and .filterBtns  
     document.querySelectorAll('.filterBtns, .thumbBtns').forEach((btn, index, allBtns) => {
 
@@ -197,7 +195,12 @@ function renderFiltered(i) {
             }
         });
     });
+
+    // navigate through .thumbBtns, , .filterBtns, #title with ArrowKeys
+    BtnsH1ArrowNavigation();
+
 }
+
 
 
 // create images and onclick-events
@@ -234,7 +237,14 @@ function renderThumbnails() {
 
         });
     });
+
+    // focus on first thumbnail after rendering
+    // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
+    let firstThumb = document.querySelector('.thumbBtns');
+    if (firstThumb) { firstThumb.focus(); }
 }
+
+
 
 // show images -> html-part
 function thumbsContent(file, arrayIndex) {
@@ -251,6 +261,29 @@ function thumbsContent(file, arrayIndex) {
             </button>        
         `;
 }
+
+
+
+// navigate through .thumbBtns, , .filterBtns, #title with ArrowKeys
+function BtnsH1ArrowNavigation() {
+    let elements = document.querySelectorAll('.filterBtns, #title, .thumbBtns');
+
+    elements.forEach((el, i) => {
+        el.addEventListener('keydown', (event) => {
+
+            if (event.key == "ArrowRight") {
+                event.preventDefault();
+                elements[(i + 1) % elements.length].focus();
+            }
+
+            if (event.key == "ArrowLeft") {
+                event.preventDefault();
+                elements[(i - 1 + elements.length) % elements.length].focus();
+            }
+        })
+    })
+}
+
 
 
 // open dialog
