@@ -94,7 +94,7 @@ header img {
     font-family: 'Josefin Sans';
 }
 
-main div {
+main div,ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
