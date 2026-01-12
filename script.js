@@ -253,7 +253,7 @@ function thumbsContent(file, arrayIndex) {
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
     return ` 
-            <li>
+            <li>    
             <figure>
             <button class="thumbBtns" data-image-index="${arrayIndex}" tabindex="0" aria-haspopup="dialog">
                 <img 
@@ -264,7 +264,9 @@ function thumbsContent(file, arrayIndex) {
             <figcaption>${arrayDescriptionsCurrent[arrayIndex]}</figcaption>   
             </figure> 
             </li>    
-        `;
+        `;  // richtige Reihenfolge, da:
+            // - img = direkter Inhalt von button
+            // - figcaption gehört zu figure (nicht zu button)
 }
 
 
