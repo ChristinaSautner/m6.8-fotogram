@@ -119,9 +119,38 @@ let slideShowCounter = 0;
 
 
 
+// use ArrowKeys to swich trough .filterBtns        (bevor .thumb-btn exists)
+// out of function to make it work befor activating a btn
+document.querySelectorAll('.filterBtns').forEach((btn, index, allBtns) => {
+
+    btn.addEventListener('keydown', (event) => {
+
+        // navigate through .filterBtns with "->"  
+        if (event.key === "ArrowRight") {
+            event.preventDefault();
+            let next = (index + 1) % allBtns.length;
+            allBtns[next].focus();
+        }
+
+        // navigate through .filterBtns with "<-"     
+        if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            let prev = (index - 1 + allBtns.length) % allBtns.length;
+            allBtns[prev].focus();
+        }
+    });
+});
+
+
+
+
+
+
+
 // to do renderThumbnails with filtered arrays
 // to also render h1-titles
 function renderFiltered(i) {
+
     // for specific h1-title
     let h1 = document.getElementById('title');
     h1.innerHTML = '';
@@ -146,6 +175,28 @@ function renderFiltered(i) {
         h1.innerHTML = titleJapan;
         renderThumbnails(i);
     }
+
+
+    // use ArrowKeys to swich trough .thumbBtns and between .thumbBtns and .filterBtns  
+    document.querySelectorAll('.filterBtns, .thumb-btn').forEach((btn, index, allBtns) => {
+
+        btn.addEventListener('keydown', (event) => {
+
+            // navigate through all btns with "->"      (..filterBtns and .thumb-btn)
+            if (event.key === "ArrowRight") {
+                event.preventDefault();
+                let next = (index + 1) % allBtns.length;
+                allBtns[next].focus();
+            }
+
+            // navigate through all btns with "<-"       (..filterBtns and .thumb-btn)
+            if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                let prev = (index - 1 + allBtns.length) % allBtns.length;
+                allBtns[prev].focus();
+            }
+        });
+    });
 }
 
 
