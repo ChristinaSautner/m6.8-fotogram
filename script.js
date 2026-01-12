@@ -119,7 +119,7 @@ let slideShowCounter = 0;
 
 
 
-// use ArrowKeys to swich trough .filterBtns        (bevor .thumb-btn exists)
+// use ArrowKeys to swich trough .filterBtns        (bevor .thumbBtns exists)
 // out of function to make it work befor activating a btn
 document.querySelectorAll('.filterBtns').forEach((btn, index, allBtns) => {
 
@@ -178,18 +178,18 @@ function renderFiltered(i) {
 
 
     // use ArrowKeys to swich trough .thumbBtns and between .thumbBtns and .filterBtns  
-    document.querySelectorAll('.filterBtns, .thumb-btn').forEach((btn, index, allBtns) => {
+    document.querySelectorAll('.filterBtns, .thumbBtns').forEach((btn, index, allBtns) => {
 
         btn.addEventListener('keydown', (event) => {
 
-            // navigate through all btns with "->"      (..filterBtns and .thumb-btn)
+            // navigate through all btns with "->"      (..filterBtns and .thumbBtns)
             if (event.key === "ArrowRight") {
                 event.preventDefault();
                 let next = (index + 1) % allBtns.length;
                 allBtns[next].focus();
             }
 
-            // navigate through all btns with "<-"       (..filterBtns and .thumb-btn)
+            // navigate through all btns with "<-"       (..filterBtns and .thumbBtns)
             if (event.key === "ArrowLeft") {
                 event.preventDefault();
                 let prev = (index - 1 + allBtns.length) % allBtns.length;
@@ -209,7 +209,7 @@ function renderThumbnails() {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
     // (element, index, array) -> btn zur Nutzung spezifisch, allBtns zum Arbeiten mit Liste (navigation)
-    document.querySelectorAll('.thumb-btn').forEach((btn, index, allBtns) => {
+    document.querySelectorAll('.thumbBtns').forEach((btn, index, allBtns) => {
 
         // open dialog with onclick
         btn.addEventListener('click', () => {
@@ -239,11 +239,11 @@ function renderThumbnails() {
 // show images -> html-part
 function thumbsContent(file, arrayIndex) {
 
-    // class              for querySelectorAll(.thumb-btn)
+    // class              for querySelectorAll(.thumbBtns)
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
     return ` 
-            <button class="thumb-btn" data-image-index="${arrayIndex}" tabindex="0" aria-haspopup="dialog">
+            <button class="thumbBtns" data-image-index="${arrayIndex}" tabindex="0" aria-haspopup="dialog">
                 <img 
                     src="./assets/images/${file}"           
                     alt="${arrayDescriptionsCurrent[arrayIndex]}"
