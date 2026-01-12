@@ -255,7 +255,7 @@ function thumbsContent(file, arrayIndex) {
     return ` 
             <li>    
             <figure>
-            <button class="thumbBtns" data-image-index="${arrayIndex}" tabindex="0" aria-haspopup="dialog">
+            <button class="thumbBtns" data-image-index="${arrayIndex}" aria-haspopup="dialog">
                 <img 
                     src="./assets/images/${file}"           
                     alt="${arrayDescriptionsCurrent[arrayIndex]}"
