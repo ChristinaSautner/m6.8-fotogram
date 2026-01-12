@@ -253,12 +253,17 @@ function thumbsContent(file, arrayIndex) {
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
     return ` 
+            <li>
+            <figure>
             <button class="thumbBtns" data-image-index="${arrayIndex}" tabindex="0" aria-haspopup="dialog">
                 <img 
                     src="./assets/images/${file}"           
                     alt="${arrayDescriptionsCurrent[arrayIndex]}"
                 >
-            </button>        
+            </button>
+            <figcaption>${arrayDescriptionsCurrent[arrayIndex]}</figcaption>   
+            </figure> 
+            </li>    
         `;
 }
 
