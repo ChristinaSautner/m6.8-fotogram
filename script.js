@@ -105,6 +105,7 @@ let arrayDescriptionsJapan = [
 // to switch between arrays
 let arrayImagesCurrent = [];
 let arrayDescriptionsCurrent = [];
+
 // to switch between h1-titles
 let titleNature = 'Natur erleben';
 let titleJapan = 'Kultur und Kulinarik Japans entdecken';
@@ -113,7 +114,6 @@ let titleJapan = 'Kultur und Kulinarik Japans entdecken';
 
 // get dialog-field
 let dialogRef = document.getElementById('dialog');
-
 // for dialog arrow-buttons
 let slideShowCounter = 0;
 
@@ -146,48 +146,47 @@ document.querySelectorAll('.filterBtns').forEach((btn, index, allBtns) => {
 
 
 
-// to do renderThumbnails with filtered arrays
+// to activate renderThumbnails with choosen arrays (nature/japan)
 // to also render h1-titles
 function renderFiltered(i) {
 
-    // for specific h1-title
+    // get html-element h1
     let h1 = document.getElementById('title');
+
+    // reset content
     h1.innerHTML = '';
+    arrayImagesCurrent = '';
+    arrayDescriptionsCurrent = '';
 
+    // give new content
     if (i == 'nature') {
-        arrayImagesCurrent = '';
         arrayImagesCurrent = arrayImagesNature;
-
-        arrayDescriptionsCurrent = '';
         arrayDescriptionsCurrent = arrayDescriptionsNature;
 
         h1.innerHTML = titleNature;
         renderThumbnails(i);
     }
     if (i == 'japan') {
-        arrayImagesCurrent = '';
         arrayImagesCurrent = arrayImagesJapan;
-
-        arrayDescriptionsCurrent = '';
         arrayDescriptionsCurrent = arrayDescriptionsJapan;
 
         h1.innerHTML = titleJapan;
         renderThumbnails(i);
     }
 
-    // use ArrowKeys to swich trough .thumbBtns and between .thumbBtns and .filterBtns  
+    // use ArrowKeys to swich trough .thumbBtns and between .filterBtns and .thumbBtns
     document.querySelectorAll('.filterBtns, .thumbBtns').forEach((btn, index, allBtns) => {
 
         btn.addEventListener('keydown', (event) => {
 
-            // navigate through all btns with "->"      (..filterBtns and .thumbBtns)
+            // navigate through all btns with "->"   
             if (event.key === "ArrowRight") {
                 event.preventDefault();
                 let next = (index + 1) % allBtns.length;
                 allBtns[next].focus();
             }
 
-            // navigate through all btns with "<-"       (..filterBtns and .thumbBtns)
+            // navigate through all btns with "<-"    
             if (event.key === "ArrowLeft") {
                 event.preventDefault();
                 let prev = (index - 1 + allBtns.length) % allBtns.length;
@@ -196,7 +195,7 @@ function renderFiltered(i) {
         });
     });
 
-    // navigate through .thumbBtns, , .filterBtns, #title with ArrowKeys
+    // navigate through .thumbBtns, .filterBtns, #title with ArrowKeys
     BtnsH1ArrowNavigation();
 
 }
@@ -206,11 +205,13 @@ function renderFiltered(i) {
 // create images and onclick-events
 function renderThumbnails() {
     let thumbnails = document.getElementById('thumbnails');
-    thumbnails.innerHTML = ''; // reset
+    thumbnails.innerHTML = '';
     // show images
     arrayImagesCurrent.forEach((file, arrayIndex) => {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
+
+    // add onclick-events to .thumbBtns
     // (element, index, array) -> btn zur Nutzung spezifisch, allBtns zum Arbeiten mit Liste (navigation)
     document.querySelectorAll('.thumbBtns').forEach((btn, index, allBtns) => {
 
@@ -240,8 +241,8 @@ function renderThumbnails() {
 
     // focus on first thumbnail after rendering
     // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
-    let firstThumb = document.querySelector('.thumbBtns');
-    if (firstThumb) { firstThumb.focus(); }
+    let firstThumb = document.querySelector('.thumbBtns');  // first btn
+    firstThumb.focus();
 }
 
 
@@ -265,18 +266,18 @@ function thumbsContent(file, arrayIndex) {
             </figure> 
             </li>    
         `;  // richtige Reihenfolge, da:
-            // - img = direkter Inhalt von button
-            // - figcaption gehört zu figure (nicht zu button)
+    // - img = direkter Inhalt von button
+    // - figcaption gehört zu figure (nicht zu button)
 }
 
 
 
-// navigate through .thumbBtns, , .filterBtns, #title with ArrowKeys
+// navigate through .thumbBtns, .filterBtns, #title with ArrowKeys
 function BtnsH1ArrowNavigation() {
-    let elements = document.querySelectorAll('.filterBtns, #title, .thumbBtns');
+    let elements = document.querySelectorAll('.filterBtns, .thumbBtns, #title');
 
-    elements.forEach((el, i) => {
-        el.addEventListener('keydown', (event) => {
+    elements.forEach((hop, i) => {
+        hop.addEventListener('keydown', (event) => {
 
             if (event.key == "ArrowRight") {
                 event.preventDefault();
@@ -327,7 +328,7 @@ function closeDialog() {
     // focus on current thumbnail-img after dialog closes
     // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
     currentThumb = document.querySelector(`[data-image-index="${slideShowCounter}"]`);
-    if (currentThumb) currentThumb.focus();
+    currentThumb.focus();
 }
 
 
@@ -378,13 +379,13 @@ function forwardsDialog() {
 
 
 // close dialog when clicking outside (don't close when using keys):
-// event.target         Element, welches angeklickt wird (ohne Bubbling-Effekt)
+// event.target         Element, welches "angeklickt" wird (ohne Bubbling-Effekt)
 dialogRef.addEventListener('click', (event) => {
     if (event.target === dialogRef) {
         closeDialog();
     }
 });     // Übersetzt:
-// „Schließe den Dialog nur wenn Klick auf Dialog-Fläche selbst!
+// „Schließe den Dialog nur wenn Klick auf Dialog-Fläche selbst (oder außerhalb...)!
 // -> nur gaaaaanz am DialogRand! (Innenleben = Header, Section, Footer)
 
 
