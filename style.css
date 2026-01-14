@@ -88,13 +88,14 @@ header img {
 /* main */
 .filterBtns {
     background-color: cadetblue;
-    border-style: outset;
-    border-color: cornflowerblue;
+    border: 1px solid steelblue;
     padding: 12px;
     font-family: 'Josefin Sans';
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
 }
 
-main div,ul {
+main div,
+ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -109,9 +110,9 @@ main img {
 }
 
 main button {
-    border: none;
     padding: 0;
     background: none;
+    border: none;
     border-radius: 18px;
 }
 
@@ -129,7 +130,7 @@ main button:active {
 
 dialog {
     border-color: gray;
-    background-color: azure;
+    background-color: #467888;
 }
 
 dialog.opened {
