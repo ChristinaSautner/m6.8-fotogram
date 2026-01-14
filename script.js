@@ -119,6 +119,8 @@ let slideShowCounter = 0;
 
 
 
+
+
 // use ArrowKeys to swich trough .filterBtns        (bevor .thumbBtns exists)
 // out of function to make it work befor activating a btn
 document.querySelectorAll('.filterBtns').forEach((btn, index, allBtns) => {
@@ -140,7 +142,6 @@ document.querySelectorAll('.filterBtns').forEach((btn, index, allBtns) => {
         }
     });
 });
-
 
 
 
@@ -197,7 +198,6 @@ function renderFiltered(i) {
 
     // navigate through .thumbBtns, .filterBtns, #title with ArrowKeys
     BtnsH1ArrowNavigation();
-
 }
 
 
@@ -294,6 +294,8 @@ function BtnsH1ArrowNavigation() {
 
 
 
+
+
 // open dialog
 function openDialog(imageIndex) {
     dialog.showModal();
@@ -303,6 +305,20 @@ function openDialog(imageIndex) {
     slideShowCounter = parseInt(imageIndex);
     dialogContents(slideShowCounter);
 }
+
+
+
+function closeDialog() {
+    dialog.close();
+    dialog.classList.remove('opened');
+
+    // focus on current thumbnail-img after dialog closes
+    // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
+    currentThumb = document.querySelector(`[data-image-index="${slideShowCounter}"]`);
+    currentThumb.focus();
+}
+
+
 
 function dialogContents(slideShowCounter) {
     document.getElementById('dialogFileTitle').innerHTML =
@@ -321,16 +337,6 @@ function dialogContents(slideShowCounter) {
 
 
 
-function closeDialog() {
-    dialog.close();
-    dialog.classList.remove('opened');
-
-    // focus on current thumbnail-img after dialog closes
-    // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
-    currentThumb = document.querySelector(`[data-image-index="${slideShowCounter}"]`);
-    currentThumb.focus();
-}
-
 
 // dialog: navigate through images (use arrow-buttons)
 function backwardsDialog() {
@@ -343,6 +349,8 @@ function backwardsDialog() {
     dialogContents(slideShowCounter);
 };
 
+
+
 function forwardsDialog() {
     slideShowCounter++;
 
@@ -352,6 +360,9 @@ function forwardsDialog() {
     }
     dialogContents(slideShowCounter);
 };
+
+
+
 
 
 // // // WORKS NOT FOR USAGE OF KEYS (event.client always says 0.0!) // // //
@@ -376,6 +387,7 @@ function forwardsDialog() {
 //         closeDialog();
 //     }
 // });      
+
 
 
 // close dialog when clicking outside (don't close when using keys):
