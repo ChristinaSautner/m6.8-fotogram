@@ -117,10 +117,6 @@ ul {
     margin: 0;
 }
 
-#thumbnails {
-
-}
-
 li::marker {
     content: "";
 }
