@@ -106,8 +106,8 @@ let arrayDescriptionsJapan = [
 let arrayImagesCurrent = [];
 let arrayDescriptionsCurrent = [];
 // to switch between h1-titles
-let titleNature = 'Einblicke in die Natur';
-let titleJapan = 'Einblicke in Kultur und Kulinarik Japans';
+let titleNature = 'Natur erleben';
+let titleJapan = 'Kultur und Kulinarik Japans entdecken';
 
 
 
