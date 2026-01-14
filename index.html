@@ -8,8 +8,7 @@
 
     <link rel="icon" href="./assets/favicon.png">
     <link rel="stylesheet" href="./style.css">
-    <!-- script.js at end of body
-         to make addEventListener work -->
+    <!-- script.js at end of body to make addEventListener work -->
 </head>
 
 <body>
@@ -22,39 +21,37 @@
     </header>
 
     <main>
-        <nav>
-            <ul>
+        <nav aria-labelledby="filterBtns">
+            <ul aria-labelledby="filterBtns">
                 <button onclick="renderFiltered('nature')" class="filterBtns"
                     aria-label="openThumbnailsNature">Wildnis</button>
                 <button onclick="renderFiltered('japan')" class="filterBtns"
                     aria-label="openThumbnailsJapan">Japan</button>
-
             </ul>
         </nav>
 
-        <!-- div für fotoliste -->
-        <h1 id="title" tabindex="0"></h1>
-        <ul id="thumbnails" aria-labelledby="title"></ul>
+        <section>
+            <h1 id="title" tabindex="0"></h1>
+            <ul id="thumbnails" aria-labelledby="title"></ul>
+        </section>
 
-        <!-- dialog für Großbild -->
         <dialog id="dialog" tabindex="-1" aria-labelledby="dialogFileTitle" aria-describedby="dialogDescription">
             <header>
                 <span id="dialogFileTitle"></span>
                 <button onclick="closeDialog()" aria-label="dialogClose"> <b>&#x58</b> </button>
             </header>
+
             <section>
                 <h2 id="dialogDescription"></h2>
                 <div id="dialogImage" aria-describedby="dialogDescription"></div>
             </section>
+
             <footer>
                 <button onclick="backwardsDialog()" aria-label="dialogPreviousImage"> <b>&#x2190</b> </button>
-                <!-- onclick ergänzen -->
                 <span id="dialogCounter"></span>
                 <button onclick="forwardsDialog()" aria-label="dialogNextImage"> <b>&#x2192</b> </button>
-                <!-- onclick ergänzen -->
             </footer>
         </dialog>
-
     </main>
 
     <footer>
