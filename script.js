@@ -102,26 +102,27 @@ let arrayDescriptionsJapan = [
 
 
 
-// to switch between arrays
+// TO SWITCH BETWEEN ARRAYS
 let arrayImagesCurrent = [];
 let arrayDescriptionsCurrent = [];
 
-// to switch between h1-titles
+// TO SWITCH BETWEEN H1-TITLES
 let titleNature = 'Natur erleben';
 let titleJapan = 'Kultur und Kulinarik Japans entdecken';
 
 
 
-// get dialog-field
+// GET DIALOG-FIELD
 let dialogRef = document.getElementById('dialog');
-// for dialog arrow-buttons
+
+// DIALOG: TO COUNT IMAGES
 let slideShowCounter = 0;
 
 
 
 
 
-// use ArrowKeys to swich trough .filterBtns        (bevor .thumbBtns exists)
+// USE ARROWKEYS TO SWICH TROUGH .FILTERBTNS        (BEVOR .THUMBBTNS EXISTS)
 // out of function to make it work befor activating a btn
 document.querySelectorAll('.filterBtns').forEach((btn, index, allBtns) => {
 
@@ -147,8 +148,8 @@ document.querySelectorAll('.filterBtns').forEach((btn, index, allBtns) => {
 
 
 
-// to activate renderThumbnails with choosen arrays (nature/japan)
-// to also render h1-titles
+// TO ACTIVATE RENDERTHUMBNAILS WITH CHOOSEN ARRAYS (NATURE/JAPAN)
+// TO RENDER H1-TITLE
 function renderFiltered(i) {
 
     // get html-element h1
@@ -202,7 +203,7 @@ function renderFiltered(i) {
 
 
 
-// create images and onclick-events
+// CREATE THUMBS (IMAGE-LIST)   -> used in renderFiltered(i)
 function renderThumbnails() {
     let thumbnails = document.getElementById('thumbnails');
     thumbnails.innerHTML = '';
@@ -247,7 +248,7 @@ function renderThumbnails() {
 
 
 
-// show images -> html-part
+// CREATE HTML-PART FOR THUMBNAILS  -> used in renderThumbnails()
 function thumbsContent(file, arrayIndex) {
 
     // class              for querySelectorAll(.thumbBtns)
@@ -272,7 +273,7 @@ function thumbsContent(file, arrayIndex) {
 
 
 
-// navigate through .thumbBtns, .filterBtns, #title with ArrowKeys
+// NAVIGATE THROUGH .THUMBBTNS, .FILTERBTNS, #TITLE WITH ARROWKEYS  -> used in renderFiltered()
 function BtnsH1ArrowNavigation() {
     let elements = document.querySelectorAll('.filterBtns, .thumbBtns, #title');
 
@@ -296,7 +297,7 @@ function BtnsH1ArrowNavigation() {
 
 
 
-// open dialog
+// OPEN DIALOG
 function openDialog(imageIndex) {
     dialog.showModal();
     dialog.classList.add('opened');
@@ -307,7 +308,7 @@ function openDialog(imageIndex) {
 }
 
 
-
+// CLOSE DIALOG
 function closeDialog() {
     dialog.close();
     dialog.classList.remove('opened');
@@ -320,6 +321,9 @@ function closeDialog() {
 
 
 
+
+
+// DIALOG: CREATE CONTENT   -> used in openDialog(), backwardsDialog(), forwardsDialog()
 function dialogContents(slideShowCounter) {
     document.getElementById('dialogFileTitle').innerHTML =
         arrayImagesCurrent[slideShowCounter];
@@ -338,7 +342,7 @@ function dialogContents(slideShowCounter) {
 
 
 
-// dialog: navigate through images (use arrow-buttons)
+// DIALOG: NAVIGATE BACKWARDS WITH ARROWKEY
 function backwardsDialog() {
     slideShowCounter--;
 
@@ -351,6 +355,7 @@ function backwardsDialog() {
 
 
 
+// DIALOG: NAVIGATE FORWARDS WITH ARROWKEY
 function forwardsDialog() {
     slideShowCounter++;
 
@@ -365,8 +370,8 @@ function forwardsDialog() {
 
 
 
-// // // WORKS NOT FOR USAGE OF KEYS (event.client always says 0.0!) // // //
-// // close dialog when clicking outside:           
+// // // WORKS NOT FOR USAGE OF KEYS (EVENT.CLIENT ALWAYS SAYS 0.0!) // // //
+// // CLOSE DIALOG WHEN CLICKING OUTSIDE     
 
 // dialogRef.addEventListener('click', (event) => {
 
@@ -390,19 +395,19 @@ function forwardsDialog() {
 
 
 
-// close dialog when clicking outside (don't close when using keys):
-// event.target         Element, welches "angeklickt" wird (ohne Bubbling-Effekt)
+// DIALOG: CLOSE WHEN CLICKING OUTSIDE (DON'T CLOSE AT EVERY KEY (<-, ->, ECT.))
+// event.target         element which is activated (without bubbling-effect)
 dialogRef.addEventListener('click', (event) => {
     if (event.target === dialogRef) {
         closeDialog();
     }
 });     // Übersetzt:
 // „Schließe den Dialog nur wenn Klick auf Dialog-Fläche selbst (oder außerhalb...)!
-// -> nur gaaaaanz am DialogRand! (Innenleben = Header, Section, Footer)
+// -> nur gaaaaanz am DialogRand, falls padding>0! (Innenleben = Header, Section, Footer)
 
 
 
-// run dialog with keys
+// // DIALOG: USE KEYBOARD TO NAVIGATE (ESC, <-, ->)
 dialogRef.addEventListener('keydown', (event) => {
     if (event.key === "Escape") { closeDialog(); }
     if (event.key === "ArrowLeft") { backwardsDialog(); }
