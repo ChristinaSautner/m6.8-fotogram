@@ -1,15 +1,13 @@
 /* MAINS */
 body {
+    font-family: 'Josefin Sans';
     background-color: rgb(67 56 133);
     display: flex;
     flex-direction: column;
     margin: 0;
 
-    font-family: 'Josefin Sans';
-
-
     /* to make footer stay at bottom (even without main-content) */
-    /* <main> flex:1 */
+    /* <main>:  flex:1 */
     min-height: 100vh;
 }
 
@@ -25,7 +23,7 @@ main {
     flex-direction: column;
 
     /* to make footer stay at bottom (even without main-content) */
-    /* <body> min-height:100vh */
+    /* <body>:  min-height:100vh */
     flex: 1;
 }
 
@@ -38,18 +36,13 @@ nav {
 footer {
     background-color: rgb(50, 42, 104);
     box-shadow: 3px 0 6px rgb(54 15 93);
-
     height: 96px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-
-    /* same as margin of h1 */
     margin-top: 32px;
 }
-
-
 
 
 
@@ -67,17 +60,15 @@ h1 {
     text-align: center;
     color: wheat;
     font-size: 32px;
-
-    /* same as margin-top of footer */
     margin: 32px 0;
 }
 
 h2 {
     text-align: center;
+    color: #1a2b2b;
     font-size: 24px;
     margin: 18px;
 }
-
 
 figure {
     margin: 0;
@@ -92,14 +83,12 @@ figcaption {
 
 
 /* SPECIFICS */
-/* header */
 header img {
     height: 64px;
     width: auto;
     margin: 16px 40px;
 }
 
-/* main */
 .filterBtns {
     background-color: cadetblue;
     border: 1px solid steelblue;
@@ -148,6 +137,11 @@ main button:active {
     transform: translateY(2px);
 }
 
+
+
+
+
+/* DIALOG */
 dialog {
     border-color: gray;
     background-color: #467888;
@@ -161,9 +155,13 @@ dialog.opened {
     width: 75vw;
 }
 
+dialog::backdrop {
+    /* !==opacity -> über rgb wird Inhalt nicht transparent */
+    background-color: rgb(50 42 104 / 81%);
+}
+
 dialog header,
 dialog footer {
-    /* cadetblue or cornflowerblue ??? */
     background-color: rgb(34 89 167);
     box-shadow: 3px 3px 3px rgb(42, 67, 104);
     flex-direction: row;
@@ -209,16 +207,6 @@ dialog button {
     font-size: 18px;
 }
 
-dialog footer span {
-    color: lightblue;
-}
-
-dialog footer button {
-    background-color: rgb(62 127 220);
-    color: darkblue;
-    height: 38px;
-}
-
 dialog button:hover {
     cursor: pointer;
     box-shadow: 0 0 8px 2px lightblue;
@@ -230,9 +218,14 @@ dialog button:active {
     transform: translateY(2px);
 }
 
-dialog::backdrop {
-    /* !==opacity -> über rgb wird Inhalt nicht transparent */
-    background-color: rgb(50 42 104 / 81%);
+dialog footer span {
+    color: lightblue;
+}
+
+dialog footer button {
+    background-color: rgb(62 127 220);
+    color: darkblue;
+    height: 38px;
 }
 
 
