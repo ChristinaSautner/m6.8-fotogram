@@ -102,6 +102,10 @@ ul {
     gap: 24px;
 }
 
+li::marker {
+    content: "";
+}
+
 main img {
     height: 166px;
     width: 166px;
