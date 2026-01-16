@@ -235,8 +235,6 @@ dialog button {
     color: var(--dialog_footer_button_text_color);
     width: 36px;
     height: 36px;
-    padding: 0;
-    border: 0;
     border-radius: 50%;
     font-size: 18px;
 }
