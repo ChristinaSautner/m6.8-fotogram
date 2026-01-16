@@ -170,6 +170,7 @@ dialog footer {
     padding: 6px 32px;
     gap: 24px;
     margin-top: 0;
+    height: 40px;
 }
 
 dialog header {
@@ -190,10 +191,10 @@ dialog section {
 }
 
 dialog img {
-    width: 70vw;
+    width: 500px;
     height: auto;
-    min-width: 400px;
-    max-height: 320px;
+    max-width: 75vw;
+    max-height: 58vh;
     margin-bottom: 12px;
 }
 
@@ -248,15 +249,15 @@ footer p {
 
 
 /* RESPONSIVE (TABLET & CO.) */
-@media (max-width:785px) {
-    dialog img {
-        min-width: 100px;
-    }
-}
-
 @media (max-width:640px) {
     main {
         margin: 0 20px;
+    }
+}
+
+@media (max-width:485px) {
+    dialog img {
+        max-width: 70vw;
     }
 }
 
@@ -282,11 +283,5 @@ footer p {
         flex-direction: column;
         justify-content: center;
         gap: 12px;
-    }
-}
-
-@media (max-width:380px) {
-    dialog img {
-        max-height: 290px;
     }
 }
