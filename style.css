@@ -89,7 +89,7 @@ header img {
     margin: 16px 40px;
 }
 
-.filterBtns {
+.filterButtons {
     background-color: cadetblue;
     border: 1px solid steelblue;
     padding: 12px;
@@ -106,7 +106,7 @@ ul {
     margin: 0;
 }
 
-/* to remove "." between .thumbBtns */
+/* to remove "." between .thumbButtons */
 li::marker {
     content: "";
 }

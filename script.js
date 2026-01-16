@@ -122,24 +122,24 @@ let slideShowCounter = 0;
 
 
 
-// USE ARROWKEYS TO SWICH TROUGH .FILTERBTNS        (BEVOR .THUMBBTNS EXISTS)
+// USE ARROWKEYS TO SWICH TROUGH .FILTERBUTTONS        (BEVOR .THUMBBUTTONS EXISTS)
 // out of function to make it work befor activating a btn
-document.querySelectorAll('.filterBtns').forEach((btn, index, allBtns) => {
+document.querySelectorAll('.filterButtons').forEach((btn, index, allButtons) => {
 
     btn.addEventListener('keydown', (event) => {
 
-        // navigate through .filterBtns with "->"  
+        // navigate through .filterButtons with "->"  
         if (event.key === "ArrowRight") {
             event.preventDefault();
-            let next = (index + 1) % allBtns.length;
-            allBtns[next].focus();
+            let next = (index + 1) % allButtons.length;
+            allButtons[next].focus();
         }
 
-        // navigate through .filterBtns with "<-"     
+        // navigate through .filterButtons with "<-"     
         if (event.key === "ArrowLeft") {
             event.preventDefault();
-            let prev = (index - 1 + allBtns.length) % allBtns.length;
-            allBtns[prev].focus();
+            let prev = (index - 1 + allButtons.length) % allButtons.length;
+            allButtons[prev].focus();
         }
     });
 });
@@ -176,29 +176,29 @@ function renderFiltered(i) {
         renderThumbnails(i);
     }
 
-    // use ArrowKeys to swich trough .thumbBtns and between .filterBtns and .thumbBtns
-    document.querySelectorAll('.filterBtns, .thumbBtns').forEach((btn, index, allBtns) => {
+    // use ArrowKeys to swich trough .thumbButtons and between .filterButtons and .thumbButtons
+    document.querySelectorAll('.filterButtons, .thumbButtons').forEach((button, index, allButtons) => {
 
-        btn.addEventListener('keydown', (event) => {
+        button.addEventListener('keydown', (event) => {
 
-            // navigate through all btns with "->"   
+            // navigate through all buttons with "->"   
             if (event.key === "ArrowRight") {
                 event.preventDefault();
-                let next = (index + 1) % allBtns.length;
-                allBtns[next].focus();
+                let next = (index + 1) % allButtons.length;
+                allButtons[next].focus();
             }
 
-            // navigate through all btns with "<-"    
+            // navigate through all buttons with "<-"    
             if (event.key === "ArrowLeft") {
                 event.preventDefault();
-                let prev = (index - 1 + allBtns.length) % allBtns.length;
-                allBtns[prev].focus();
+                let prev = (index - 1 + allButtons.length) % allButtons.length;
+                allButtons[prev].focus();
             }
         });
     });
 
-    // navigate through .thumbBtns, .filterBtns, #title with ArrowKeys
-    BtnsH1ArrowNavigation();
+    // navigate through .thumbButtons, .filterButtons, #title with ArrowKeys
+    ButtonsH1ArrowNavigation();
 }
 
 
@@ -212,29 +212,29 @@ function renderThumbnails() {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
 
-    // add onclick-events to .thumbBtns
-    // (element, index, array) -> btn zur Nutzung spezifisch, allBtns zum Arbeiten mit Liste (navigation)
-    document.querySelectorAll('.thumbBtns').forEach((btn, index, allBtns) => {
+    // add onclick-events to .thumbButtons
+    // (element, index, array) -> btn zur Nutzung spezifisch, allButtons zum Arbeiten mit Liste (navigation)
+    document.querySelectorAll('.thumbButtons').forEach((button, index, allButtons) => {
 
         // open dialog with onclick
-        btn.addEventListener('click', () => {
+        button.addEventListener('click', () => {
             openDialog(index);
         });
 
-        btn.addEventListener('keydown', (event) => {
+        button.addEventListener('keydown', (event) => {
 
             // navigate through thumbnails with "->"
             if (event.key === "ArrowRight") {
                 event.preventDefault();
-                let next = (index + 1) % allBtns.length;
-                allBtns[next].focus();
+                let next = (index + 1) % allButtons.length;
+                allButtons[next].focus();
             }
 
             // navigate through thumbnails with "<-"
             if (event.key === "ArrowLeft") {
                 event.preventDefault();
-                let prev = (index - 1 + allBtns.length) % allBtns.length;
-                allBtns[prev].focus();
+                let prev = (index - 1 + allButtons.length) % allButtons.length;
+                allButtons[prev].focus();
             }
 
         });
@@ -242,7 +242,7 @@ function renderThumbnails() {
 
     // focus on first thumbnail after rendering
     // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
-    let firstThumb = document.querySelector('.thumbBtns');  // first btn
+    let firstThumb = document.querySelector('.thumbButtons');  // first btn
     firstThumb.focus();
 }
 
@@ -251,13 +251,13 @@ function renderThumbnails() {
 // CREATE HTML-PART FOR THUMBNAILS  -> used in renderThumbnails()
 function thumbsContent(file, arrayIndex) {
 
-    // class              for querySelectorAll(.thumbBtns)
+    // class              for querySelectorAll(.thumbButtons)
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
     return ` 
             <li>    
             <figure>
-            <button class="thumbBtns" data-image-index="${arrayIndex}" aria-haspopup="dialog" aria-label="open image in big view">
+            <button class="thumbButtons" data-image-index="${arrayIndex}" aria-haspopup="dialog" aria-label="open image in big view">
                 <img 
                     src="./assets/images/${file}"           
                     alt="${arrayDescriptionsCurrent[arrayIndex]}"
@@ -273,9 +273,9 @@ function thumbsContent(file, arrayIndex) {
 
 
 
-// NAVIGATE THROUGH .THUMBBTNS, .FILTERBTNS, #TITLE WITH ARROWKEYS  -> used in renderFiltered()
-function BtnsH1ArrowNavigation() {
-    let elements = document.querySelectorAll('.filterBtns, .thumbBtns, #title');
+// NAVIGATE THROUGH .THUMBBUTTONS, .FILTERBUTTONS, #TITLE WITH ARROWKEYS  -> used in renderFiltered()
+function ButtonsH1ArrowNavigation() {
+    let elements = document.querySelectorAll('.filterButtons, .thumbButtons, #title');
 
     elements.forEach((hop, i) => {
         hop.addEventListener('keydown', (event) => {
