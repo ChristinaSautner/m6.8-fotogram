@@ -106,6 +106,9 @@ let arrayDescriptionsJapan = [
 let arrayImagesCurrent = [];
 let arrayDescriptionsCurrent = [];
 
+
+// GET H1-TITLE
+let h1 = document.getElementById('title');
 // TO SWITCH BETWEEN H1-TITLES
 let titleNature = 'Natur erleben';
 let titleJapan = 'Kultur und Kulinarik Japans entdecken';
@@ -151,9 +154,6 @@ document.querySelectorAll('.filterButtons').forEach((btn, index, allButtons) => 
 // TO ACTIVATE RENDERTHUMBNAILS WITH CHOOSEN ARRAYS (NATURE/JAPAN)
 // TO RENDER H1-TITLE
 function renderFiltered(i) {
-
-    // get html-element h1
-    let h1 = document.getElementById('title');
 
     // reset content
     h1.innerHTML = '';
