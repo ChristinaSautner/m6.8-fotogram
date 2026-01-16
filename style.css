@@ -246,7 +246,7 @@ footer p {
 
 
 
-/* MEDIA-QUERIES */
+/* RESPONSIVE (TABLET & CO.) */
 @media (max-width:785px) {
     dialog img {
         width: 70vw;
