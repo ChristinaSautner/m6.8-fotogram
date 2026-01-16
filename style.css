@@ -1,7 +1,46 @@
+/* FONT */
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+
+/* CUSTOM PROPERTIES */
+:root {
+    --body_background_color: #433885;
+    --header_footer_background_color: #322a68;
+
+    --filter_button_background_color: cadetblue;
+    --filter_button_border_color: steelblue;
+    --filter_button_box_shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+    --button_hover_color: lightblue;
+
+    --h1_color: wheat;
+    --dark_text_color: #1a2b2b;
+    --light_text_color: lightblue;
+
+    --dialog_background_color: #467888;
+    --dialog_border_color: dimgray;
+    --dialog_backdrop_color: rgb(50 42 104 / 81%);
+    --dialog_header_footer_background_color: #2259a7;
+    --dialog_header_footer_box_shadow_color: #2a4368;
+    --dialog_footer_button_background_color: #3e7fdc;
+    --dialog_footer_button_text_color: darkblue;
+}
+
+
+
+
+
 /* MAINS */
 body {
     font-family: 'Josefin Sans';
-    background-color: rgb(67 56 133);
+    background-color: var(--body_background_color);
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -12,7 +51,7 @@ body {
 }
 
 header {
-    background-color: rgb(50, 42, 104);
+    background-color: var(--header_footer_background_color);
     box-shadow: 0 3px 3px rgb(54 15 93);
     display: flex;
 }
@@ -34,7 +73,7 @@ nav {
 }
 
 footer {
-    background-color: rgb(50, 42, 104);
+    background-color: var(--header_footer_background_color);
     box-shadow: 3px 0 6px rgb(54 15 93);
     height: 96px;
     display: flex;
@@ -49,23 +88,16 @@ footer {
 
 
 /* GENERALS */
-@font-face {
-    font-family: 'Josefin Sans';
-    src: url('fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 h1 {
     text-align: center;
-    color: wheat;
+    color: var(--h1_color);
     font-size: 32px;
     margin: 32px 0;
 }
 
 h2 {
     text-align: center;
-    color: #1a2b2b;
+    color: var(--dark_text_color);
     font-size: 24px;
     margin: 18px;
 }
@@ -90,11 +122,11 @@ header img {
 }
 
 .filterButtons {
-    background-color: cadetblue;
-    border: 1px solid steelblue;
+    background-color: var(--filter_button_background_color);
+    border: 1px solid var(--filter_button_border_color);
     padding: 12px;
     font-family: 'Josefin Sans';
-    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-shadow: var(--filter_button_box_shadow);
 }
 
 ul {
@@ -127,7 +159,7 @@ main button {
 
 main button:hover {
     cursor: pointer;
-    box-shadow: 0 0 8px 2px lightblue;
+    box-shadow: 0 0 8px 2px var(--button_hover_color);
     /* check if 0.1s is acceptable */
     transition: 0.1s ease-in-out;
 
@@ -143,8 +175,8 @@ main button:active {
 
 /* DIALOG */
 dialog {
-    border-color: gray;
-    background-color: #467888;
+    background-color: var(--dialog_background_color);
+    border-color: var(--dialog_border_color);
 }
 
 dialog.opened {
@@ -157,13 +189,13 @@ dialog.opened {
 
 dialog::backdrop {
     /* !== opacity -> über rgb wird Inhalt nicht transparent */
-    background-color: rgb(50 42 104 / 81%);
+    background-color: var(--dialog_backdrop_color);
 }
 
 dialog header,
 dialog footer {
-    background-color: rgb(34 89 167);
-    box-shadow: 3px 3px 3px rgb(42, 67, 104);
+    background-color: var(--dialog_header_footer_background_color);
+    box-shadow: 3px 3px 3px var(--dialog_header_footer_box_shadow_color);
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -199,8 +231,8 @@ dialog img {
 }
 
 dialog button {
-    background-color: rgb(34 89 167);
-    color: lightblue;
+    background-color: var(--dialog_footer_button_background_color);
+    color: var(--dialog_footer_button_text_color);
     width: 36px;
     height: 36px;
     padding: 0;
@@ -211,7 +243,7 @@ dialog button {
 
 dialog button:hover {
     cursor: pointer;
-    box-shadow: 0 0 8px 2px lightblue;
+    box-shadow: 0 0 8px 2px var(--button_hover_color);
     /* check if 0.1s is acceptable */
     transition: 0.1s ease-in-out;
 }
@@ -221,12 +253,10 @@ dialog button:active {
 }
 
 dialog footer span {
-    color: lightblue;
+    color: var(--light_text_color);
 }
 
 dialog footer button {
-    background-color: rgb(62 127 220);
-    color: darkblue;
     height: 38px;
 }
 
@@ -242,6 +272,7 @@ footer img {
 
 footer p {
     margin: 0;
+    color: var(--light_text_color);
 }
 
 
