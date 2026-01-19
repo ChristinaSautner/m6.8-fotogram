@@ -98,38 +98,35 @@ let arrayDescriptionsJapan = [
     "big crossing in Tokyo"
 ];
 
-// script.js at end of body instead of head (to let addEventListener work)
+/** script.js at end of body instead of head (to let addEventListener work) */
 
-// TO SWITCH BETWEEN ARRAYS
+/** TO SWITCH BETWEEN ARRAYS */
 let arrayImagesCurrent = [];
 let arrayDescriptionsCurrent = [];
 
-// GET H1-TITLE
+/** GET H1-TITLE */
 let h1 = document.getElementById('title');
-// TO SWITCH BETWEEN H1-TITLES
+/** TO SWITCH BETWEEN H1-TITLES */
 let titleNature = 'Natur erleben';
 let titleJapan = 'Kultur und Kulinarik Japans entdecken';
 
-// GET DIALOG-FIELD
+/** GET DIALOG-FIELD */
 let dialogRef = document.getElementById('dialog');
 
-// DIALOG: TO COUNT IMAGES
+/** DIALOG: TO COUNT IMAGES */
 let slideShowCounter = 0;
 
-// USE ARROWKEYS TO SWICH TROUGH .FILTERBUTTONS        (BEVOR .THUMBBUTTONS EXISTS)
-// out of function to make it work befor activating a btn
+/** 
+ * USE ARROWKEYS TO SWICH TROUGH .FILTERBUTTONS        (BEVOR .THUMBBUTTONS EXISTS)
+*  out of function to make it work befor activating a btn
+*/
 document.querySelectorAll('.FilterButtons').forEach((btn, index, allButtons) => {
-
     btn.addEventListener('keydown', (event) => {
-
-        // navigate through .FilterButtons with "->"  
         if (event.key === "ArrowRight") {
             event.preventDefault();
             let next = (index + 1) % allButtons.length;
             allButtons[next].focus();
         }
-
-        // navigate through .FilterButtons with "<-"     
         if (event.key === "ArrowLeft") {
             event.preventDefault();
             let prev = (index - 1 + allButtons.length) % allButtons.length;
@@ -138,14 +135,14 @@ document.querySelectorAll('.FilterButtons').forEach((btn, index, allButtons) => 
     });
 });
 
-// TO ACTIVATE RENDERTHUMBNAILS WITH CHOOSEN ARRAYS (NATURE/JAPAN)
-// TO RENDER H1-TITLE
+/** 
+ * TO ACTIVATE RENDERTHUMBNAILS WITH CHOOSEN ARRAYS (NATURE/JAPAN)
+*  TO RENDER H1-TITLE
+*/
 function renderFiltered(i) {
 
-    // reset content
     resetContent();
 
-    // give new content
     if (i == 'nature') {
         arrayImagesCurrent = arrayImagesNature;
         arrayDescriptionsCurrent = arrayDescriptionsNature;
@@ -161,52 +158,52 @@ function renderFiltered(i) {
         renderThumbnails(i);
     }
 
-    // navigate trough .ThumbButtons and between .FilterButtons and .ThumbButtons
     filteredArrowKeys();
-
-    // navigate through .ThumbButtons, .FilterButtons, #title with ArrowKeys
     buttonsH1ArrowNavigation();
 }
 
-// RESET CONTENT BEFORE RENDERING NEW CONTENT   -> used in renderFiltered(i)
+/**
+ * RESET CONTENT BEFORE RENDERING NEW CONTENT   
+ * -> used in renderFiltered(i)
+ */
 function resetContent() {
     h1.innerHTML = '';
     arrayImagesCurrent = '';
     arrayDescriptionsCurrent = '';
 }
 
-// CREATE THUMBS (IMAGE-LIST)   -> used in renderFiltered(i)
+/**
+ * CREATE THUMBS (IMAGE-LIST)
+ * CREATE ONCLICK-EVENTS FOR THUMBS
+ * CREATE FOCUS ON FIRST THUMB
+ * -> used in renderFiltered(i)   
+ */
 function renderThumbnails() {
     let thumbnails = document.getElementById('thumbnails');
     thumbnails.innerHTML = '';
-    // show images
+
     arrayImagesCurrent.forEach((file, arrayIndex) => {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
 
-    // add onclick-events to .ThumbButtons
     thumbnailOnclicks();
 
-    // focus on first thumbnail after rendering
-    // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
-    let firstThumb = document.querySelector('.ThumbButtons');  // first btn
+    let firstThumb = document.querySelector('.ThumbButtons');
     firstThumb.focus();
 }
 
-// NAVIGATE TROUGH .THUMBBUTTONS AND BETWEEN .FILTERBUTTONS AND .THUMBBUTTONS  -> used in renderFiltered(i)
+/**
+ * NAVIGATE TROUGH .THUMBBUTTONS AND BETWEEN .FILTERBUTTONS AND .THUMBBUTTONS
+ * -> used in renderFiltered(i)
+ */
 function filteredArrowKeys() {
     document.querySelectorAll('.FilterButtons, .ThumbButtons').forEach((button, index, allButtons) => {
-
         button.addEventListener('keydown', (event) => {
-
-            // navigate through all buttons with "->"   
             if (event.key === "ArrowRight") {
                 event.preventDefault();
                 let next = (index + 1) % allButtons.length;
                 allButtons[next].focus();
             }
-
-            // navigate through all buttons with "<-"    
             if (event.key === "ArrowLeft") {
                 event.preventDefault();
                 let prev = (index - 1 + allButtons.length) % allButtons.length;
@@ -216,18 +213,19 @@ function filteredArrowKeys() {
     });
 }
 
-// NAVIGATE THROUGH .THUMBBUTTONS, .FILTERBUTTONS, #TITLE WITH ARROWKEYS  -> used in renderFiltered(i)
+/**
+ * NAVIGATE THROUGH .THUMBBUTTONS, .FILTERBUTTONS, #TITLE WITH ARROWKEYS
+ * -> used in renderFiltered(i)
+ */
 function buttonsH1ArrowNavigation() {
     let elements = document.querySelectorAll('.FilterButtons, .ThumbButtons, #title');
 
     elements.forEach((hop, i) => {
         hop.addEventListener('keydown', (event) => {
-
             if (event.key == "ArrowRight") {
                 event.preventDefault();
                 elements[(i + 1) % elements.length].focus();
             }
-
             if (event.key == "ArrowLeft") {
                 event.preventDefault();
                 elements[(i - 1 + elements.length) % elements.length].focus();
@@ -236,12 +234,14 @@ function buttonsH1ArrowNavigation() {
     })
 }
 
-// CREATE HTML-PART FOR THUMBNAILS  -> used in renderThumbnails()
+/**
+ * CREATE HTML-PART FOR THUMBNAILS
+ * -> used in renderThumbnails()
+ *      class              for querySelectorAll(.ThumbButtons)
+ *      data-image-index   to count through images
+ *      tabindex           to walk through with tab-key
+ */
 function thumbsContent(file, arrayIndex) {
-
-    // class              for querySelectorAll(.ThumbButtons)
-    // data-image-index   to count through images
-    // tabindex           to walk through with tab-key
     return ` 
         <li>    
           <figure>
@@ -254,31 +254,27 @@ function thumbsContent(file, arrayIndex) {
             <figcaption>${arrayDescriptionsCurrent[arrayIndex]}</figcaption>   
           </figure> 
         </li>    
-        `;  // richtige Reihenfolge, da:
-    // - img = direkter Inhalt von button
-    // - figcaption gehört zu figure (nicht zu button)
+        `;
 }
 
-// ADD ONCLICK-EVENTS TO .THUMBBUTTONS   -> used in renderThumbnails()
-// (element, index, array) -> btn zur Nutzung spezifisch, allButtons zum Arbeiten mit Liste (navigation)
+/**
+ * ADD ONCLICK-EVENTS TO .THUMBBUTTONS
+ * -> used in renderThumbnails()
+ *   (element, index, array) -> btn zur Nutzung spezifisch, allButtons zum Arbeiten mit Liste (navigation)
+ */
 function thumbnailOnclicks() {
     document.querySelectorAll('.ThumbButtons').forEach((button, index, allButtons) => {
 
-        // open dialog with onclick
         button.addEventListener('click', () => {
             openDialog(index);
         });
 
         button.addEventListener('keydown', (event) => {
-
-            // navigate through thumbnails with "->"
             if (event.key === "ArrowRight") {
                 event.preventDefault();
                 let next = (index + 1) % allButtons.length;
                 allButtons[next].focus();
             }
-
-            // navigate through thumbnails with "<-"
             if (event.key === "ArrowLeft") {
                 event.preventDefault();
                 let prev = (index - 1 + allButtons.length) % allButtons.length;
@@ -288,28 +284,34 @@ function thumbnailOnclicks() {
     });
 }
 
-// OPEN DIALOG
+/** 
+ * OPEN DIALOG
+ * give Counter number of clicked image (.thumButton)
+ */
 function openDialog(imageIndex) {
     dialog.showModal();
     dialog.classList.add('opened');
 
-    // give Counter the number of named Index
     slideShowCounter = parseInt(imageIndex);
     dialogContents(slideShowCounter);
 }
 
-// CLOSE DIALOG
+/**
+ * CLOSE DIALOG
+ * focus on current thumbnail-img after dialog closes
+ */
 function closeDialog() {
     dialog.close();
     dialog.classList.remove('opened');
 
-    // focus on current thumbnail-img after dialog closes
-    // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
     currentThumb = document.querySelector(`[data-image-index="${slideShowCounter}"]`);
     currentThumb.focus();
 }
 
-// DIALOG: CREATE CONTENT   -> used in openDialog(), backwardsDialog(), forwardsDialog()
+/**
+ * DIALOG: CREATE CONTENT
+ * -> used in openDialog(), backwardsDialog(), forwardsDialog()
+ */
 function dialogContents(slideShowCounter) {
     document.getElementById('dialogFileTitle').innerHTML =
         arrayImagesCurrent[slideShowCounter];
@@ -324,41 +326,45 @@ function dialogContents(slideShowCounter) {
         `${parseInt(slideShowCounter) + 1} / ${arrayImagesCurrent.length}`;
 }
 
-// DIALOG: NAVIGATE BACKWARDS WITH ARROWKEY
+/**
+ * DIALOG: NAVIGATE BACKWARDS WITH ARROWKEY
+ */
 function backwardsDialog() {
     slideShowCounter--;
 
-    // if firstImg reached, then Counter=lastIMG
     if (slideShowCounter < 0) {
         slideShowCounter = arrayImagesCurrent.length - 1;
     }
     dialogContents(slideShowCounter);
 };
 
-// DIALOG: NAVIGATE FORWARDS WITH ARROWKEY
+/**
+ * DIALOG: NAVIGATE FORWARDS WITH ARROWKEY
+ */
 function forwardsDialog() {
     slideShowCounter++;
 
-    // if lastIMG reached, then Counter=firstImg
     if (slideShowCounter >= arrayImagesCurrent.length) {
         slideShowCounter = 0;
     }
     dialogContents(slideShowCounter);
 };
 
-
-
-// DIALOG: CLOSE WHEN CLICKING OUTSIDE (DON'T CLOSE AT EVERY KEY (<-, ->, ECT.))
-// event.target         element which is activated (without bubbling-effect)
+/**
+ * DIALOG: CLOSE WHEN CLICKING OUTSIDE 
+ * (DON'T CLOSE AT EVERY KEY (<-, ->, ECT.))
+ * event.target ->  element which is activated (without bubbling-effect)
+ * (doesn't close when clicking on inner elements: header, section, footer)
+ */
 dialogRef.addEventListener('click', (event) => {
     if (event.target === dialogRef) {
         closeDialog();
     }
-});     // Übersetzt:
-// „Schließe den Dialog nur wenn Klick auf Dialog-Fläche selbst (oder außerhalb...)!
-// -> nur gaaaaanz am DialogRand, falls padding>0! (Innenleben = Header, Section, Footer)
+});
 
-// // DIALOG: USE KEYBOARD TO NAVIGATE (ESC, <-, ->)
+/**
+ * DIALOG: USE KEYBOARD TO NAVIGATE (ESC, <-, ->)
+ */
 dialogRef.addEventListener('keydown', (event) => {
     if (event.key === "Escape") { closeDialog(); }
     if (event.key === "ArrowLeft") { backwardsDialog(); }
