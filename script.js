@@ -178,7 +178,7 @@ function renderFiltered(i) {
     filteredArrowKeys();
 
     // navigate through .ThumbButtons, .FilterButtons, #title with ArrowKeys
-    ButtonsH1ArrowNavigation();
+    buttonsH1ArrowNavigation();
 }
 
 
@@ -238,7 +238,7 @@ function filteredArrowKeys() {
 
 
 // NAVIGATE THROUGH .THUMBBUTTONS, .FILTERBUTTONS, #TITLE WITH ARROWKEYS  -> used in renderFiltered(i)
-function ButtonsH1ArrowNavigation() {
+function buttonsH1ArrowNavigation() {
     let elements = document.querySelectorAll('.FilterButtons, .ThumbButtons, #title');
 
     elements.forEach((hop, i) => {
