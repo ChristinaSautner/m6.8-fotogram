@@ -156,9 +156,7 @@ document.querySelectorAll('.filterButtons').forEach((btn, index, allButtons) => 
 function renderFiltered(i) {
 
     // reset content
-    h1.innerHTML = '';
-    arrayImagesCurrent = '';
-    arrayDescriptionsCurrent = '';
+    resetContent();
 
     // give new content
     if (i == 'nature') {
@@ -176,7 +174,46 @@ function renderFiltered(i) {
         renderThumbnails(i);
     }
 
-    // use ArrowKeys to swich trough .thumbButtons and between .filterButtons and .thumbButtons
+    // navigate trough .thumbButtons and between .filterButtons and .thumbButtons
+    filteredArrowKeys();
+
+    // navigate through .thumbButtons, .filterButtons, #title with ArrowKeys
+    ButtonsH1ArrowNavigation();
+}
+
+
+
+// RESET CONTENT BEFORE RENDERING NEW CONTENT   -> used in renderFiltered(i)
+function resetContent() {
+    h1.innerHTML = '';
+    arrayImagesCurrent = '';
+    arrayDescriptionsCurrent = '';
+}
+
+
+
+// CREATE THUMBS (IMAGE-LIST)   -> used in renderFiltered(i)
+function renderThumbnails() {
+    let thumbnails = document.getElementById('thumbnails');
+    thumbnails.innerHTML = '';
+    // show images
+    arrayImagesCurrent.forEach((file, arrayIndex) => {
+        thumbnails.innerHTML += thumbsContent(file, arrayIndex);
+    });
+
+    // add onclick-events to .thumbButtons
+    thumbnailOnclicks();
+
+    // focus on first thumbnail after rendering
+    // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
+    let firstThumb = document.querySelector('.thumbButtons');  // first btn
+    firstThumb.focus();
+}
+
+
+
+// NAVIGATE TROUGH .THUMBBUTTONS AND BETWEEN .FILTERBUTTONS AND .THUMBBUTTONS  -> used in renderFiltered(i)
+function filteredArrowKeys() {
     document.querySelectorAll('.filterButtons, .thumbButtons').forEach((button, index, allButtons) => {
 
         button.addEventListener('keydown', (event) => {
@@ -196,54 +233,28 @@ function renderFiltered(i) {
             }
         });
     });
-
-    // navigate through .thumbButtons, .filterButtons, #title with ArrowKeys
-    ButtonsH1ArrowNavigation();
 }
 
 
 
-// CREATE THUMBS (IMAGE-LIST)   -> used in renderFiltered(i)
-function renderThumbnails() {
-    let thumbnails = document.getElementById('thumbnails');
-    thumbnails.innerHTML = '';
-    // show images
-    arrayImagesCurrent.forEach((file, arrayIndex) => {
-        thumbnails.innerHTML += thumbsContent(file, arrayIndex);
-    });
+// NAVIGATE THROUGH .THUMBBUTTONS, .FILTERBUTTONS, #TITLE WITH ARROWKEYS  -> used in renderFiltered(i)
+function ButtonsH1ArrowNavigation() {
+    let elements = document.querySelectorAll('.filterButtons, .thumbButtons, #title');
 
-    // add onclick-events to .thumbButtons
-    // (element, index, array) -> btn zur Nutzung spezifisch, allButtons zum Arbeiten mit Liste (navigation)
-    document.querySelectorAll('.thumbButtons').forEach((button, index, allButtons) => {
+    elements.forEach((hop, i) => {
+        hop.addEventListener('keydown', (event) => {
 
-        // open dialog with onclick
-        button.addEventListener('click', () => {
-            openDialog(index);
-        });
-
-        button.addEventListener('keydown', (event) => {
-
-            // navigate through thumbnails with "->"
-            if (event.key === "ArrowRight") {
+            if (event.key == "ArrowRight") {
                 event.preventDefault();
-                let next = (index + 1) % allButtons.length;
-                allButtons[next].focus();
+                elements[(i + 1) % elements.length].focus();
             }
 
-            // navigate through thumbnails with "<-"
-            if (event.key === "ArrowLeft") {
+            if (event.key == "ArrowLeft") {
                 event.preventDefault();
-                let prev = (index - 1 + allButtons.length) % allButtons.length;
-                allButtons[prev].focus();
+                elements[(i - 1 + elements.length) % elements.length].focus();
             }
-
-        });
-    });
-
-    // focus on first thumbnail after rendering
-    // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
-    let firstThumb = document.querySelector('.thumbButtons');  // first btn
-    firstThumb.focus();
+        })
+    })
 }
 
 
@@ -273,24 +284,33 @@ function thumbsContent(file, arrayIndex) {
 
 
 
-// NAVIGATE THROUGH .THUMBBUTTONS, .FILTERBUTTONS, #TITLE WITH ARROWKEYS  -> used in renderFiltered()
-function ButtonsH1ArrowNavigation() {
-    let elements = document.querySelectorAll('.filterButtons, .thumbButtons, #title');
+// ADD ONCLICK-EVENTS TO .THUMBBUTTONS   -> used in renderThumbnails()
+// (element, index, array) -> btn zur Nutzung spezifisch, allButtons zum Arbeiten mit Liste (navigation)
+function thumbnailOnclicks() {
+    document.querySelectorAll('.thumbButtons').forEach((button, index, allButtons) => {
 
-    elements.forEach((hop, i) => {
-        hop.addEventListener('keydown', (event) => {
+        // open dialog with onclick
+        button.addEventListener('click', () => {
+            openDialog(index);
+        });
 
-            if (event.key == "ArrowRight") {
+        button.addEventListener('keydown', (event) => {
+
+            // navigate through thumbnails with "->"
+            if (event.key === "ArrowRight") {
                 event.preventDefault();
-                elements[(i + 1) % elements.length].focus();
+                let next = (index + 1) % allButtons.length;
+                allButtons[next].focus();
             }
 
-            if (event.key == "ArrowLeft") {
+            // navigate through thumbnails with "<-"
+            if (event.key === "ArrowLeft") {
                 event.preventDefault();
-                elements[(i - 1 + elements.length) % elements.length].focus();
+                let prev = (index - 1 + allButtons.length) % allButtons.length;
+                allButtons[prev].focus();
             }
-        })
-    })
+        });
+    });
 }
 
 
@@ -404,6 +424,8 @@ dialogRef.addEventListener('click', (event) => {
 });     // Übersetzt:
 // „Schließe den Dialog nur wenn Klick auf Dialog-Fläche selbst (oder außerhalb...)!
 // -> nur gaaaaanz am DialogRand, falls padding>0! (Innenleben = Header, Section, Footer)
+
+
 
 
 
