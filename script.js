@@ -100,12 +100,9 @@ let arrayDescriptionsJapan = [
 
 // script.js at end of body instead of head (to let addEventListener work)
 
-
-
 // TO SWITCH BETWEEN ARRAYS
 let arrayImagesCurrent = [];
 let arrayDescriptionsCurrent = [];
-
 
 // GET H1-TITLE
 let h1 = document.getElementById('title');
@@ -113,17 +110,11 @@ let h1 = document.getElementById('title');
 let titleNature = 'Natur erleben';
 let titleJapan = 'Kultur und Kulinarik Japans entdecken';
 
-
-
 // GET DIALOG-FIELD
 let dialogRef = document.getElementById('dialog');
 
 // DIALOG: TO COUNT IMAGES
 let slideShowCounter = 0;
-
-
-
-
 
 // USE ARROWKEYS TO SWICH TROUGH .FILTERBUTTONS        (BEVOR .THUMBBUTTONS EXISTS)
 // out of function to make it work befor activating a btn
@@ -146,10 +137,6 @@ document.querySelectorAll('.FilterButtons').forEach((btn, index, allButtons) => 
         }
     });
 });
-
-
-
-
 
 // TO ACTIVATE RENDERTHUMBNAILS WITH CHOOSEN ARRAYS (NATURE/JAPAN)
 // TO RENDER H1-TITLE
@@ -181,16 +168,12 @@ function renderFiltered(i) {
     buttonsH1ArrowNavigation();
 }
 
-
-
 // RESET CONTENT BEFORE RENDERING NEW CONTENT   -> used in renderFiltered(i)
 function resetContent() {
     h1.innerHTML = '';
     arrayImagesCurrent = '';
     arrayDescriptionsCurrent = '';
 }
-
-
 
 // CREATE THUMBS (IMAGE-LIST)   -> used in renderFiltered(i)
 function renderThumbnails() {
@@ -209,8 +192,6 @@ function renderThumbnails() {
     let firstThumb = document.querySelector('.ThumbButtons');  // first btn
     firstThumb.focus();
 }
-
-
 
 // NAVIGATE TROUGH .THUMBBUTTONS AND BETWEEN .FILTERBUTTONS AND .THUMBBUTTONS  -> used in renderFiltered(i)
 function filteredArrowKeys() {
@@ -235,8 +216,6 @@ function filteredArrowKeys() {
     });
 }
 
-
-
 // NAVIGATE THROUGH .THUMBBUTTONS, .FILTERBUTTONS, #TITLE WITH ARROWKEYS  -> used in renderFiltered(i)
 function buttonsH1ArrowNavigation() {
     let elements = document.querySelectorAll('.FilterButtons, .ThumbButtons, #title');
@@ -256,8 +235,6 @@ function buttonsH1ArrowNavigation() {
         })
     })
 }
-
-
 
 // CREATE HTML-PART FOR THUMBNAILS  -> used in renderThumbnails()
 function thumbsContent(file, arrayIndex) {
@@ -281,8 +258,6 @@ function thumbsContent(file, arrayIndex) {
     // - img = direkter Inhalt von button
     // - figcaption gehört zu figure (nicht zu button)
 }
-
-
 
 // ADD ONCLICK-EVENTS TO .THUMBBUTTONS   -> used in renderThumbnails()
 // (element, index, array) -> btn zur Nutzung spezifisch, allButtons zum Arbeiten mit Liste (navigation)
@@ -313,10 +288,6 @@ function thumbnailOnclicks() {
     });
 }
 
-
-
-
-
 // OPEN DIALOG
 function openDialog(imageIndex) {
     dialog.showModal();
@@ -326,7 +297,6 @@ function openDialog(imageIndex) {
     slideShowCounter = parseInt(imageIndex);
     dialogContents(slideShowCounter);
 }
-
 
 // CLOSE DIALOG
 function closeDialog() {
@@ -338,10 +308,6 @@ function closeDialog() {
     currentThumb = document.querySelector(`[data-image-index="${slideShowCounter}"]`);
     currentThumb.focus();
 }
-
-
-
-
 
 // DIALOG: CREATE CONTENT   -> used in openDialog(), backwardsDialog(), forwardsDialog()
 function dialogContents(slideShowCounter) {
@@ -358,10 +324,6 @@ function dialogContents(slideShowCounter) {
         `${parseInt(slideShowCounter) + 1} / ${arrayImagesCurrent.length}`;
 }
 
-
-
-
-
 // DIALOG: NAVIGATE BACKWARDS WITH ARROWKEY
 function backwardsDialog() {
     slideShowCounter--;
@@ -372,8 +334,6 @@ function backwardsDialog() {
     }
     dialogContents(slideShowCounter);
 };
-
-
 
 // DIALOG: NAVIGATE FORWARDS WITH ARROWKEY
 function forwardsDialog() {
@@ -388,33 +348,6 @@ function forwardsDialog() {
 
 
 
-
-
-// // // WORKS NOT FOR USAGE OF KEYS (EVENT.CLIENT ALWAYS SAYS 0.0!) // // //
-// // CLOSE DIALOG WHEN CLICKING OUTSIDE     
-
-// dialogRef.addEventListener('click', (event) => {
-
-// // function gets Coordinates of dialog (height, top, position, ect.)
-// // function is already defined in DOM
-// // rect -> rectangular path => size is specified by width and height
-
-//     const rect = dialogRef.getBoundingClientRect();
-
-// // when click outside of dialog, then closeDialog()
-
-//     if (
-//         event.clientX < rect.left ||
-//         event.clientX > rect.right ||
-//         event.clientY < rect.top ||
-//         event.clientY > rect.bottom
-//     ) {
-//         closeDialog();
-//     }
-// });      
-
-
-
 // DIALOG: CLOSE WHEN CLICKING OUTSIDE (DON'T CLOSE AT EVERY KEY (<-, ->, ECT.))
 // event.target         element which is activated (without bubbling-effect)
 dialogRef.addEventListener('click', (event) => {
@@ -424,10 +357,6 @@ dialogRef.addEventListener('click', (event) => {
 });     // Übersetzt:
 // „Schließe den Dialog nur wenn Klick auf Dialog-Fläche selbst (oder außerhalb...)!
 // -> nur gaaaaanz am DialogRand, falls padding>0! (Innenleben = Header, Section, Footer)
-
-
-
-
 
 // // DIALOG: USE KEYBOARD TO NAVIGATE (ESC, <-, ->)
 dialogRef.addEventListener('keydown', (event) => {
