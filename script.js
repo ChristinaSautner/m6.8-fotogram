@@ -117,8 +117,11 @@ let dialogRef = document.getElementById('dialog');
 let slideShowCounter = 0;
 
 /** 
- * USE ARROWKEYS TO SWICH TROUGH .FILTERBUTTONS        (BEVOR .THUMBBUTTONS EXISTS)
+ * USE ARROWKEYS TO SWICH TROUGH .FILTERBUTTONS        
+ * (BEFORE .THUMBBUTTONS EXISTS)
 *  out of function to make it work befor activating a btn
+*  @method preventDefault() - to prevent doing its "normal" behavior
+*  @method focus - to set focus on element
 */
 document.querySelectorAll('.FilterButtons').forEach((btn, index, allButtons) => {
     btn.addEventListener('keydown', (event) => {
@@ -136,12 +139,21 @@ document.querySelectorAll('.FilterButtons').forEach((btn, index, allButtons) => 
 });
 
 /** 
- * TO ACTIVATE RENDERTHUMBNAILS WITH CHOOSEN ARRAYS (NATURE/JAPAN)
-*  TO RENDER H1-TITLE
+ * TO ACTIVATE RENDERTHUMBNAILS(i) WITH CHOOSEN ARRAYS (NATURE/JAPAN)
 */
 function renderFiltered(i) {
 
-    resetContent();
+    renderFilteredArrayH1(i);
+    arrowKeysFilteredAndThumbs();
+    arrowKeysIncludingH1();
+}
+
+/** 
+ * RENDER SPECIFIC H1 AND ARRAY
+ * -> used in renderFiltered(i)
+ */
+function renderFilteredArrayH1(i) {
+    resetThumbnailContent();
 
     if (i == 'nature') {
         arrayImagesCurrent = arrayImagesNature;
@@ -157,46 +169,13 @@ function renderFiltered(i) {
         h1.innerHTML = titleJapan;
         renderThumbnails(i);
     }
-
-    filteredArrowKeys();
-    buttonsH1ArrowNavigation();
 }
 
 /**
- * RESET CONTENT BEFORE RENDERING NEW CONTENT   
+ * ARROW-KEY-NAVIGATION BETWEEN .FILTERBUTTONS AND .THUMBBUTTONS
  * -> used in renderFiltered(i)
  */
-function resetContent() {
-    h1.innerHTML = '';
-    arrayImagesCurrent = '';
-    arrayDescriptionsCurrent = '';
-}
-
-/**
- * CREATE THUMBS (IMAGE-LIST)
- * CREATE ONCLICK-EVENTS FOR THUMBS
- * CREATE FOCUS ON FIRST THUMB
- * -> used in renderFiltered(i)   
- */
-function renderThumbnails() {
-    let thumbnails = document.getElementById('thumbnails');
-    thumbnails.innerHTML = '';
-
-    arrayImagesCurrent.forEach((file, arrayIndex) => {
-        thumbnails.innerHTML += thumbsContent(file, arrayIndex);
-    });
-
-    thumbnailOnclicks();
-
-    let firstThumb = document.querySelector('.ThumbButtons');
-    firstThumb.focus();
-}
-
-/**
- * NAVIGATE TROUGH .THUMBBUTTONS AND BETWEEN .FILTERBUTTONS AND .THUMBBUTTONS
- * -> used in renderFiltered(i)
- */
-function filteredArrowKeys() {
+function arrowKeysFilteredAndThumbs() {
     document.querySelectorAll('.FilterButtons, .ThumbButtons').forEach((button, index, allButtons) => {
         button.addEventListener('keydown', (event) => {
             if (event.key === "ArrowRight") {
@@ -214,10 +193,11 @@ function filteredArrowKeys() {
 }
 
 /**
- * NAVIGATE THROUGH .THUMBBUTTONS, .FILTERBUTTONS, #TITLE WITH ARROWKEYS
+ * ARROW-KEY-NAVIGATION .THUMBBUTTONS, .FILTERBUTTONS, #TITLE 
+ * (INCLUDING H1-TITLE)
  * -> used in renderFiltered(i)
  */
-function buttonsH1ArrowNavigation() {
+function arrowKeysIncludingH1() {
     let elements = document.querySelectorAll('.FilterButtons, .ThumbButtons, #title');
 
     elements.forEach((hop, i) => {
@@ -235,17 +215,44 @@ function buttonsH1ArrowNavigation() {
 }
 
 /**
+ * RESET CONTENT BEFORE RENDERING NEW CONTENT   
+ * -> used in renderH1(i) (in renderFiltered(i))
+ */
+function resetThumbnailContent() {
+    h1.innerHTML = '';
+    arrayImagesCurrent = '';
+    arrayDescriptionsCurrent = '';
+}
+
+/**
+ * CREATE THUMBS (IMAGE-LIST)
+ * -> used in renderFiltered(i)   
+ */
+function renderThumbnails() {
+    let thumbnails = document.getElementById('thumbnails');
+    thumbnails.innerHTML = '';
+
+    arrayImagesCurrent.forEach((file, arrayIndex) => {
+        thumbnails.innerHTML += thumbsContent(file, arrayIndex);
+    });
+
+    thumbnailOnclicks();
+    focusFirstThumb();
+}
+
+/**
  * CREATE HTML-PART FOR THUMBNAILS
  * -> used in renderThumbnails()
- *      class              for querySelectorAll(.ThumbButtons)
- *      data-image-index   to count through images
- *      tabindex           to walk through with tab-key
+ * @param {elements} class - for querySelectorAll(.ThumbButtons)
+ * @param {elements} data-image-index - to count through images
+ * @param {elements} tabindex - to walk through with tab-key
+ * @method return - to make html usable in other functions
  */
 function thumbsContent(file, arrayIndex) {
     return ` 
         <li>    
           <figure>
-            <button class="ThumbButtons" data-image-index="${arrayIndex}" aria-haspopup="dialog" aria-label="open image in big view">
+            <button class="ThumbButtons" data-image-index="${arrayIndex}" aria-haspopup="dialog" aria-label="open image with big view">
               <img 
                 src="./assets/images/${file}"           
                 alt="${arrayDescriptionsCurrent[arrayIndex]}"
@@ -260,7 +267,9 @@ function thumbsContent(file, arrayIndex) {
 /**
  * ADD ONCLICK-EVENTS TO .THUMBBUTTONS
  * -> used in renderThumbnails()
- *   (element, index, array) -> btn zur Nutzung spezifisch, allButtons zum Arbeiten mit Liste (navigation)
+ * @param {elements} button - to use single button
+ * @param {elements} allButtons - to use list of buttons for navigation
+ * @param {event} preventDefault() - to prevent doing its "normal" behavior
  */
 function thumbnailOnclicks() {
     document.querySelectorAll('.ThumbButtons').forEach((button, index, allButtons) => {
@@ -284,9 +293,20 @@ function thumbnailOnclicks() {
     });
 }
 
+/**
+ * FOCUS FIRST THUMBNAIL AFTER RENDERING
+ * -> used in renderThumbnails()
+ * @method querySelector    - to select first match of class
+ * @methot querySelectorAll - to select all matches of class
+ */
+function focusFirstThumb() {
+    let firstThumb = document.querySelector('.ThumbButtons');
+    firstThumb.focus();
+}
+
 /** 
  * OPEN DIALOG
- * give Counter number of clicked image (.thumButton)
+ * @method slideShowCounter - count through images (number of opened image)
  */
 function openDialog(imageIndex) {
     dialog.showModal();
@@ -298,7 +318,7 @@ function openDialog(imageIndex) {
 
 /**
  * CLOSE DIALOG
- * focus on current thumbnail-img after dialog closes
+ * @method currentThumb - set focus on current thumbnail-img (after dialog closes)
  */
 function closeDialog() {
     dialog.close();
@@ -320,10 +340,17 @@ function dialogContents(slideShowCounter) {
         arrayDescriptionsCurrent[slideShowCounter];
 
     document.getElementById('dialogImage').innerHTML =
-        `<img src="./assets/images/${arrayImagesCurrent[slideShowCounter]}">`;
+        dialogContentsHtml();
 
     document.getElementById('dialogCounter').innerHTML =
         `${parseInt(slideShowCounter) + 1} / ${arrayImagesCurrent.length}`;
+}
+
+/** DIALOG: CREATE HTML
+ * -> used in dialogContents()
+ */
+function dialogContentsHtml() {
+   return `<img src="./assets/images/${arrayImagesCurrent[slideShowCounter]}">`;
 }
 
 /**
@@ -353,7 +380,7 @@ function forwardsDialog() {
 /**
  * DIALOG: CLOSE WHEN CLICKING OUTSIDE 
  * (DON'T CLOSE AT EVERY KEY (<-, ->, ECT.))
- * event.target ->  element which is activated (without bubbling-effect)
+ * @property target - element which is activated (without bubbling-effect)
  * (doesn't close when clicking on inner elements: header, section, footer)
  */
 dialogRef.addEventListener('click', (event) => {
