@@ -127,18 +127,18 @@ let slideShowCounter = 0;
 
 // USE ARROWKEYS TO SWICH TROUGH .FILTERBUTTONS        (BEVOR .THUMBBUTTONS EXISTS)
 // out of function to make it work befor activating a btn
-document.querySelectorAll('.filterButtons').forEach((btn, index, allButtons) => {
+document.querySelectorAll('.FilterButtons').forEach((btn, index, allButtons) => {
 
     btn.addEventListener('keydown', (event) => {
 
-        // navigate through .filterButtons with "->"  
+        // navigate through .FilterButtons with "->"  
         if (event.key === "ArrowRight") {
             event.preventDefault();
             let next = (index + 1) % allButtons.length;
             allButtons[next].focus();
         }
 
-        // navigate through .filterButtons with "<-"     
+        // navigate through .FilterButtons with "<-"     
         if (event.key === "ArrowLeft") {
             event.preventDefault();
             let prev = (index - 1 + allButtons.length) % allButtons.length;
@@ -174,10 +174,10 @@ function renderFiltered(i) {
         renderThumbnails(i);
     }
 
-    // navigate trough .thumbButtons and between .filterButtons and .thumbButtons
+    // navigate trough .ThumbButtons and between .FilterButtons and .ThumbButtons
     filteredArrowKeys();
 
-    // navigate through .thumbButtons, .filterButtons, #title with ArrowKeys
+    // navigate through .ThumbButtons, .FilterButtons, #title with ArrowKeys
     ButtonsH1ArrowNavigation();
 }
 
@@ -201,12 +201,12 @@ function renderThumbnails() {
         thumbnails.innerHTML += thumbsContent(file, arrayIndex);
     });
 
-    // add onclick-events to .thumbButtons
+    // add onclick-events to .ThumbButtons
     thumbnailOnclicks();
 
     // focus on first thumbnail after rendering
     // querySelector vs querySelectorAll -> returns just first match (insteas of all matches)
-    let firstThumb = document.querySelector('.thumbButtons');  // first btn
+    let firstThumb = document.querySelector('.ThumbButtons');  // first btn
     firstThumb.focus();
 }
 
@@ -214,7 +214,7 @@ function renderThumbnails() {
 
 // NAVIGATE TROUGH .THUMBBUTTONS AND BETWEEN .FILTERBUTTONS AND .THUMBBUTTONS  -> used in renderFiltered(i)
 function filteredArrowKeys() {
-    document.querySelectorAll('.filterButtons, .thumbButtons').forEach((button, index, allButtons) => {
+    document.querySelectorAll('.FilterButtons, .ThumbButtons').forEach((button, index, allButtons) => {
 
         button.addEventListener('keydown', (event) => {
 
@@ -239,7 +239,7 @@ function filteredArrowKeys() {
 
 // NAVIGATE THROUGH .THUMBBUTTONS, .FILTERBUTTONS, #TITLE WITH ARROWKEYS  -> used in renderFiltered(i)
 function ButtonsH1ArrowNavigation() {
-    let elements = document.querySelectorAll('.filterButtons, .thumbButtons, #title');
+    let elements = document.querySelectorAll('.FilterButtons, .ThumbButtons, #title');
 
     elements.forEach((hop, i) => {
         hop.addEventListener('keydown', (event) => {
@@ -262,13 +262,13 @@ function ButtonsH1ArrowNavigation() {
 // CREATE HTML-PART FOR THUMBNAILS  -> used in renderThumbnails()
 function thumbsContent(file, arrayIndex) {
 
-    // class              for querySelectorAll(.thumbButtons)
+    // class              for querySelectorAll(.ThumbButtons)
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
     return ` 
             <li>    
             <figure>
-            <button class="thumbButtons" data-image-index="${arrayIndex}" aria-haspopup="dialog" aria-label="open image in big view">
+            <button class="ThumbButtons" data-image-index="${arrayIndex}" aria-haspopup="dialog" aria-label="open image in big view">
                 <img 
                     src="./assets/images/${file}"           
                     alt="${arrayDescriptionsCurrent[arrayIndex]}"
@@ -287,7 +287,7 @@ function thumbsContent(file, arrayIndex) {
 // ADD ONCLICK-EVENTS TO .THUMBBUTTONS   -> used in renderThumbnails()
 // (element, index, array) -> btn zur Nutzung spezifisch, allButtons zum Arbeiten mit Liste (navigation)
 function thumbnailOnclicks() {
-    document.querySelectorAll('.thumbButtons').forEach((button, index, allButtons) => {
+    document.querySelectorAll('.ThumbButtons').forEach((button, index, allButtons) => {
 
         // open dialog with onclick
         button.addEventListener('click', () => {
