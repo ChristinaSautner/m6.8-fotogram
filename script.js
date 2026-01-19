@@ -243,17 +243,17 @@ function thumbsContent(file, arrayIndex) {
     // data-image-index   to count through images
     // tabindex           to walk through with tab-key
     return ` 
-            <li>    
-            <figure>
+        <li>    
+          <figure>
             <button class="ThumbButtons" data-image-index="${arrayIndex}" aria-haspopup="dialog" aria-label="open image in big view">
-                <img 
-                    src="./assets/images/${file}"           
-                    alt="${arrayDescriptionsCurrent[arrayIndex]}"
-                >
+              <img 
+                src="./assets/images/${file}"           
+                alt="${arrayDescriptionsCurrent[arrayIndex]}"
+              >
             </button>
             <figcaption>${arrayDescriptionsCurrent[arrayIndex]}</figcaption>   
-            </figure> 
-            </li>    
+          </figure> 
+        </li>    
         `;  // richtige Reihenfolge, da:
     // - img = direkter Inhalt von button
     // - figcaption gehört zu figure (nicht zu button)
