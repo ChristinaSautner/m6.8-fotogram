@@ -228,6 +228,7 @@ dialog img {
     max-width: 75vw;
     max-height: 58vh;
     margin-bottom: 12px;
+    object-fit: contain;
 }
 
 dialog button {
@@ -281,12 +282,6 @@ footer span {
 @media (max-width:640px) {
     main {
         margin: 0 20px;
-    }
-}
-
-@media (max-width:485px) {
-    dialog img {
-        max-width: 70vw;
     }
 }
 
