@@ -256,10 +256,6 @@ dialog footer span {
     color: var(--light_text_color);
 }
 
-dialog footer button {
-    height: 38px;
-}
-
 
 
 
@@ -289,7 +285,12 @@ footer span {
 @media (max-width:460px) {
     dialog header,
     dialog footer {
-        padding: 6px 6px;
+        padding: 6px 16px;
+    }
+
+    dialog button {
+        width: 32px;
+        height: 32px;
     }
 }
 
