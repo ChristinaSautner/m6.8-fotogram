@@ -219,7 +219,7 @@ dialog section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 dialog img {
@@ -319,5 +319,15 @@ footer span {
         flex-direction: column;
         justify-content: center;
         gap: 12px;
+    }
+}
+
+@media (max-width:390px) {
+   dialog header {
+        gap: 6px;
+   }
+   
+    dialog h2 {
+        margin: 8px;
     }
 }
